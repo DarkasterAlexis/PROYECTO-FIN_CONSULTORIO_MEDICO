@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REgistrar Personal</title>
+</head>
+<body>
+    <h2>Registrar Personal</h2>
+    <form method="POST">
+        <label>Nombre:</label>
+        <input type="text" name="nombre" required>
+        <br><br>
+
+        <label>Apellidos:</label>
+        <input type="text" name="apellidos" required>
+        <br><br>
+
+        <label>Teléfono:</label>
+        <input type="text" name="telefono">
+        <br><br>
+
+        <label>Usuario:</label>
+        <input type="text" name="usuario" required>
+        <br><br>
+
+        <label>Contraseña:</label>
+        <input type="password" name="password" required>
+        <br><br>
+
+        <label>Rol:</label>
+        <select name="rol_id">
+            <option value="1">Administrador</option>
+            <option value="2">Recepcionista</option>
+        </select>
+        <br><br>
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>
