@@ -14,6 +14,8 @@ db.init_app(app)
 from models.rol import Rol
 from models.usuario import Usuario
 from models.paciente import Paciente
+from models.medico import Medico
+from models.personal import Personal
 
 with app.app_context():
     db.create_all()

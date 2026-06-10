@@ -7,3 +7,4 @@ class Usuario(db.Model):
     password = db.Column(db.String(255),nullable=False)
     estado = db.Column(db.Boolean,default=True)
     rol_id = db.Column(db.Integer,db.ForeignKey('rol.rol_id'))
+    CodPersonal = db.Column(db.Integer,db.ForeignKey('personal.CodPersonal'),nullable=False)
