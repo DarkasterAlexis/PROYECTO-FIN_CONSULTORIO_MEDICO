@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Médico</title>
+</head>
+<body>
+    <h1>EDITAR MÉDICO</h1>
+    <form method="POST">
+        <h3>Datos Personales</h3>
+        <label>Nombre:</label>
+        <input type="text"name="nombre"value="{{ personal.Nombre }}"required>
+        <br><br>
+        <label>Apellidos:</label>
+        <input type="text"name="apellidos"value="{{ personal.Apellidos }}"required>
+        <br><br>
+        <label>Teléfono:</label>
+        <input type="text"name="telefono"value="{{ personal.Telefono }}">
+        <br><br>
+        <h3>Datos Médicos</h3>
+        <label>Especialidad:</label>
+        <input type="text"name="especialidad"value="{{ medico.Especialidad }}"required>
+        <br><br>
+        <label>Matrícula Profesional:</label>
+        <input type="text"name="matricula"value="{{ medico.MatriculaProfesional }}"required>
+        <br><br>
+        <button type="submit">Guardar Cambios</button>
+        <a href="{{ url_for('medico.listar_medicos') }}"><button type="button">Cancelar</button></a>
+    </form>
+</body>
+</html>

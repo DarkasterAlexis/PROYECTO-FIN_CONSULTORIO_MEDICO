@@ -18,7 +18,6 @@ def registrar_personal():
 
         # Verificar si el usuario ya existe
         usuario_existente = Usuario.query.filter_by(nombre_usuario=usuario).first()
-
         if usuario_existente:
             return "Error: El nombre de usuario ya existe."
         try:

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Médicos</title>
+</head>
+<body>
+    <h1>MÉDICOS REGISTRADOS</h1>
+    <table border="1">
+        <tr>
+            <th>Código</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Especialidad</th>
+            <th>Matrícula</th>
+            <th>Estado</th>
+        </tr>{% for medico in lista_medicos %}<tr>
+            <td>MED{{ "%03d"|format(medico.CodMedico) }}</td>
+            <td>{{ medico.personal.Nombre }}</td>
+            <td>{{ medico.personal.Apellidos }}</td>
+            <td>{{ medico.Especialidad }}</td>
+            <td>{{ medico.MatriculaProfesional }}</td>
+            <td>{{ medico.Estado }}</td>
+            <td><a href="/editar_medico/{{ medico.CodMedico }}">
+                    <button>Editar</button></a>
+                <a href="/eliminar_medico/{{ medico.CodMedico }}"
+                    onclick="return confirm('¿Esta seguro de desactivar este médico?')">
+                    <button>Eliminar</button></a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    <br><br>
+    <a href="/registrar_medico"><button>Registrar Nuevo Médico</button></a>
+    <a href="/login"><button>Iniciar Sesión</button></a>
+</body>
+</html>
