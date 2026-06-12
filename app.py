@@ -27,6 +27,14 @@ app.register_blueprint(medico_bp)
 
 with app.app_context():
     db.create_all()
+    if Rol.query.count() == 0:
+        rol1 = Rol(nombre_rol='Administrador')
+        rol2 = Rol(nombre_rol='Recepcionista')
+        rol3 = Rol(nombre_rol='Medico')
+        db.session.add(rol1)
+        db.session.add(rol2)
+        db.session.add(rol3)
+        db.session.commit()
 
 @app.route('/')
 def inicio():

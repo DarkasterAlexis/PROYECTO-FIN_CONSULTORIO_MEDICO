@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Listado de Personal</title>
+</head>
+<body>
+    <h1>LISTADO DE PERSONAL</h1>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>Codigo</th>
+            <th>Nombre</th>
+            <th>Apellidos</th>
+            <th>Usuario</th>
+            <th>Rol</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+        {% for usuario in lista_personal %}
+        <tr>
+            <td>PER{{ "%03d"|format(usuario.personal.CodPersonal) }}</td>
+            <td>{{ usuario.personal.Nombre }}</td>
+            <td>{{ usuario.personal.Apellidos }}</td>
+            <td>{{ usuario.nombre_usuario }}</td>
+            <td>{{ usuario.rol.nombre_rol}}</td>
+            <td>{{ usuario.personal.Estado }}</td>
+            <td>
+                <a href="/editar_personal/{{ usuario.personal.CodPersonal }}">
+                    <button>Editar</button></a>
+                <a href="/eliminar_personal/{{ usuario.personal.CodPersonal }}"
+                    onclick="return confirm('¿Esta seguro de desactivar este personal?')">
+                    <button>Eliminar</button></a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/registrar_personal"><button type="button">Registrar nuevo personal</button></a>
+    <a href="/login"><button>Iniciar Sesión</button></a>
+</body>
+</html>

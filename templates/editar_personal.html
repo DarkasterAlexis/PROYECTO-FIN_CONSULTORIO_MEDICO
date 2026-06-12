@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Personal</title>
+</head>
+<body>
+    <h1>EDITAR PERSONAL</h1>
+
+    <form method="POST">
+
+        <label>Nombre:</label>
+        <input
+            type="text"
+            name="nombre"
+            value="{{ personal.Nombre }}"
+            required
+        >
+        <br><br>
+        <label>Apellidos:</label>
+        <input type="text"name="apellidos"value="{{ personal.Apellidos }}"required>
+        <br><br>
+        <label>Telefono:</label>
+        <input type="text"name="telefono"value="{{ personal.Telefono }}">
+        <br><br>
+        <button type="submit">Guardar Cambios</button>
+    </form>
+</body>
+</html>

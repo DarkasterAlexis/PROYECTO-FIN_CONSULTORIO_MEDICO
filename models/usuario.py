@@ -1,4 +1,6 @@
 from database import db
+from models.rol import Rol
+from models.personal import Personal
 
 class Usuario(db.Model):
     __tablename__ = 'usuario'
@@ -8,3 +10,5 @@ class Usuario(db.Model):
     estado = db.Column(db.Boolean,default=True)
     rol_id = db.Column(db.Integer,db.ForeignKey('rol.rol_id'))
     CodPersonal = db.Column(db.Integer,db.ForeignKey('personal.CodPersonal'),nullable=False)
+    rol = db.relationship('Rol')
+    personal = db.relationship('Personal')
