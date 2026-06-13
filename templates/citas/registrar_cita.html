@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Cita</title>
+</head>
+<body>
+    <h1>REGISTRAR CITA</h1>
+    <form method="POST">
+        <label for="">Paciente:</label>
+        <select name="paciente" required>
+            {% for paciente in pacientes %}
+            <option value="{{ paciente.paciente_id }}">
+                {{ paciente.ci }}
+                -
+                {{ paciente.nombres }}
+                {{ paciente.apellidos }}
+            </option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="">Médico:</label>
+        <select name="medico" required>
+            {% for medico in medicos %}
+            <option value="{{ medico.CodMedico }}">
+                {{ medico.personal.Nombre }}
+                {{ medico.personal.Apellidos }}
+                -
+                {{ medico.Especialidad }}
+            </option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="">Fecha:</label>
+        <input type="date"name="fecha"required>
+        <br><br>
+        <label for="">Hora:</label>
+        <input type="time"name="hora"required>
+        <br><br>
+        <label for="">Motivo:</label>
+        <textarea name="motivo"></textarea>
+        <br><br>
+        <button type="submit">Guardar Cita</button>
+    </form>
+    <br>
+    <a href="/listar_citas"><button>Cancelar</button></a>
+</body>
+</html>

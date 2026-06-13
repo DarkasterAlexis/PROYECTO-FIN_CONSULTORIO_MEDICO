@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista de Citas</title>
+</head>
+<body>
+    <h1>LISTA DE CITAS</h1>
+    <hr>
+    <a href="/registrar_cita"><button>Nueva Cita</button></a>
+    {% if session['rol'] == 'Administrador' %}
+        <a href="/dashboard_admin"><button>Volver al Dashboard</button></a>
+    {% else %}
+        <a href="/dashboard_recepcionista"><button>Volver al Dashboard</button></a>
+    {% endif %}
+    <br><br>
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Paciente</th>
+            <th>CI</th>
+            <th>Médico</th>
+            <th>Especialidad</th>
+            <th>Fecha</th>
+            <th>Hora</th>
+            <th>Motivo</th>
+            <th>Estado</th>
+            <th>Origen</th>
+        </tr>
+        {% for cita in citas %}
+        <tr>
+            <td>{{ cita.CodCita }}</td>
+            <td>{{ cita.paciente.nombres }}{{ cita.paciente.apellidos }}</td>
+            <td>{{ cita.paciente.ci }}</td>
+            <td>{{ cita.medico.personal.Nombre }}{{ cita.medico.personal.Apellidos }}</td>
+            <td>{{ cita.medico.Especialidad }}</td>
+            <td>{{ cita.Fecha }}</td>
+            <td>{{ cita.Hora }}</td>
+            <td>{{ cita.Motivo }}</td>
+            <td>{{ cita.Estado }}</td>
+            <td>{{ cita.Origen }}</td>
+        </tr>
+        {% endfor}
+    </ble>
+</body>
+</html>

@@ -45,7 +45,7 @@ def registrar_medico():
             db.session.add(nuevo_medico)
             # Guardar todo junto
             db.session.commit()
-            return render_template('medico/registro_exitoso_medicos.html',nombre=nombre, apellidos=apellidos)
+            return render_template('medico/registro_exitoso_medico.html',nombre=nombre, apellidos=apellidos)
         except Exception as e:
             db.session.rollback()
             return f"Error al registrar: {str(e)}"

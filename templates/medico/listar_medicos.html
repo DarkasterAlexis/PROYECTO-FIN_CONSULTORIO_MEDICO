@@ -16,6 +16,7 @@
             <th>Especialidad</th>
             <th>Matrícula</th>
             <th>Estado</th>
+            <th>Acciones</th>
         </tr>{% for medico in lista_medicos %}<tr>
             <td>MED{{ "%03d"|format(medico.CodMedico) }}</td>
             <td>{{ medico.personal.Nombre }}</td>
