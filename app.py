@@ -16,6 +16,7 @@ from models.usuario import Usuario
 from models.paciente import Paciente
 from models.medico import Medico
 from models.personal import Personal
+from models.cita import Cita
 
 #importar controladores
 from controllers.personal_controller import personal_bp
