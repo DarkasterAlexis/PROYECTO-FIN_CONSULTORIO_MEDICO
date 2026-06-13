@@ -10,9 +10,9 @@
     <hr>
     <a href="/registrar_cita"><button>Nueva Cita</button></a>
     {% if session['rol'] == 'Administrador' %}
-        <a href="/dashboard_admin"><button>Volver al Dashboard</button></a>
+        <a href="/dashboard_admin"><button>Volver al Menu</button></a>
     {% else %}
-        <a href="/dashboard_recepcionista"><button>Volver al Dashboard</button></a>
+        <a href="/dashboard_recepcionista"><button>Volver al Menu</button></a>
     {% endif %}
     <br><br>
     <table border="1">
@@ -27,6 +27,7 @@
             <th>Motivo</th>
             <th>Estado</th>
             <th>Origen</th>
+            <th>Acciones</th>
         </tr>
         {% for cita in citas %}
         <tr>
@@ -40,8 +41,22 @@
             <td>{{ cita.Motivo }}</td>
             <td>{{ cita.Estado }}</td>
             <td>{{ cita.Origen }}</td>
+            <td>
+                {% if cita.Estado != 'Atendida' and cita.Estado != 'Cancelada' %}
+                    <a href="/editar_cita/{{ cita.CodCita }}"><button>Editar</button></a>
+                {% endif %}
+                {% if cita.Estado == 'Pendiente' %}
+                    <a href="/confirmar_cita/{{ cita.CodCita }}"
+                    onclick="return confirm('¿Confirmar esta cita?')"><button>Confirmar</button></a>
+                {% endif %}
+                {% if cita.Estado != 'Cancelada'
+                    and cita.Estado != 'Atendida' %}
+                    <a href="/cancelar_cita/{{ cita.CodCita }}"
+                    onclick="return confirm('¿Cancelar esta cita?')"><button>Cancelar</button></a>
+                {% endif %}
+            </td>
         </tr>
-        {% endfor}
+        {% endfor %}
     </ble>
 </body>
 </html>

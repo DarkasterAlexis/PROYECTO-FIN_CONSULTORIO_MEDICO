@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agenda Médica</title>
+</head>
+<body>
+    <h1>AGENDA MÉDICA DEL DÍA</h1>
+    {% if citas %}
+    <table border="1">
+        <tr>
+            <th>Hora</th>
+            <th>Paciente</th>
+            <th>CI</th>
+            <th>Teléfono</th>
+            <th>Motivo</th>
+            <th>Acción</th>
+        </tr>
+        {% for cita in citas %}
+        <tr>
+            <td>{{ cita.Hora.strftime('%H:%M') }}</td>
+            <td>{{ cita.paciente.nombres }}{{ cita.paciente.apellidos }}</td>
+            <td>{{ cita.paciente.ci }}</td>
+            <td>{{ cita.paciente.telefono }}</td>
+            <td>{{ cita.Motivo }}</td>
+            <td><button disabled>Iniciar Atención(Próximamente)</button></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% else %}
+    <p>No existen citas confirmadas para hoy.</p>
+    {% endif %}
+    <br>
+    <a href="/dashboard_medico">
+        <button>Volver al menu</button>
+    </a>
+</body>
+</html>

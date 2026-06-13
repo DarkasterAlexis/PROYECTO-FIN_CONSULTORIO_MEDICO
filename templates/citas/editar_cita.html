@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Cita</title>
+</head>
+<body>
+    <h1>EDITAR CITA</h1>
+    <form method="POST">
+        <p>
+            <label for="">Paciente: </label>
+            <strong>{{ cita.paciente.nombres }}{{ cita.paciente.apellidos }}</strong>
+        </p>
+        <p>
+            <label for="">CI: </label>
+            <strong>{{ cita.paciente.ci }}</strong>
+        </p>
+        <label for="">Médico: </label>
+        <select name="medico" required>
+            {% for medico in medicos %}
+            <option value="{{ medico.CodMedico }}"
+            {% if medico.CodMedico == cita.CodMedico %}
+                selected
+            {% endif %}
+            >
+                {{ medico.personal.Nombre }}
+                {{ medico.personal.Apellidos }}
+                -
+                {{ medico.Especialidad }}
+            </option>
+            {% endfor %}
+        </select><br><br>
+        <label for="">Fecha: </label>
+        <input type="date"name="fecha"value="{{ cita.Fecha }}"required><br><br>
+        <label for="">Hora: </label>
+        <input type="time"name="hora"value="{{ cita.Hora.strftime('%H:%M') }}"required><br><br>
+        <label for="">Motivo: </label>
+        <textarea name="motivo">{{ cita.Motivo }}</textarea><br><br>
+        <button type="submit">Guardar Cambios</button>
+    </form><br>
+    <a href="/listar_citas"><button>Cancelar</button></a><br>
+    <a href="/listar_citas"><button>Volver</button></a>
+</body>
+</html>
