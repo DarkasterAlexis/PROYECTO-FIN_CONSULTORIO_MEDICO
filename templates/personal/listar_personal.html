@@ -8,6 +8,7 @@
 <body>
     <h1>LISTADO DE PERSONAL</h1>
     <hr>
+    <a href="/registrar_personal"><button type="button">Registrar nuevo personal</button></a>
     <table border="1">
         <tr>
             <th>Codigo</th>
@@ -36,7 +37,12 @@
         </tr>
         {% endfor %}
     </table>
-    <a href="/registrar_personal"><button type="button">Registrar nuevo personal</button></a>
-    <a href="/login"><button>Iniciar Sesión</button></a>
+    {% if session.get('usuario_id') %}
+        {% if session['rol'] == 'Administrador' %}
+            <a href="/dashboard_admin"><button>Volver al menu</button></a>
+        {% endif %}
+    {% else %}
+        <a href="/login"><button>Iniciar Sesión</button></a>
+    {% endif %}
 </body>
 </html>

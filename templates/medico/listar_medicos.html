@@ -7,6 +7,7 @@
 </head>
 <body>
     <h1>MÉDICOS REGISTRADOS</h1>
+    <a href="/registrar_medico"><button>Registrar Nuevo Médico</button></a>
     <table border="1">
         <tr>
             <th>Código</th>
@@ -31,7 +32,12 @@
         {% endfor %}
     </table>
     <br><br>
-    <a href="/registrar_medico"><button>Registrar Nuevo Médico</button></a>
-    <a href="/login"><button>Iniciar Sesión</button></a>
+    {% if session.get('usuario_id') %}
+        {% if session['rol'] == 'Administrador' %}
+            <a href="/dashboard_admin"><button>Volver al menu</button></a>
+        {% endif %}
+    {% else %}
+        <a href="/login"><button>Iniciar Sesión</button></a>
+    {% endif %}
 </body>
 </html>

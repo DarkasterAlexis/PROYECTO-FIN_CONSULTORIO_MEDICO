@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, session
 from database import db
 from models.personal import Personal
 from models.usuario import Usuario
@@ -45,16 +45,20 @@ def registrar_medico():
             db.session.add(nuevo_medico)
             # Guardar todo junto
             db.session.commit()
-            return redirect(url_for('medico.listar_medicos'))
+            return render_template('medico/registro_exitoso_medicos.html',nombre=nombre, apellidos=apellidos)
         except Exception as e:
             db.session.rollback()
             return f"Error al registrar: {str(e)}"
-    return render_template('registrar_medico.html')
+    return render_template('medico/registrar_medico.html')
 
 @medico_bp.route('/listar_medicos')
 def listar_medicos():
+    # Protección de acceso
+    if session.get('usuario_id') and session.get('rol') != 'Administrador':
+        return "Acceso denegado"
+
     lista_medicos = Medico.query.filter_by(Estado='Activo').all()
-    return render_template('listar_medicos.html',lista_medicos=lista_medicos)
+    return render_template('medico/listar_medicos.html',lista_medicos=lista_medicos)
 
 @medico_bp.route('/editar_medico/<int:id>', methods=['GET', 'POST'])
 def editar_medico(id):
@@ -72,7 +76,7 @@ def editar_medico(id):
         except Exception as e:
             db.session.rollback()
             return f"Error al actualizar: {str(e)}"
-    return render_template('editar_medico.html',medico=medico,personal=personal)
+    return render_template('medico/editar_medico.html',medico=medico,personal=personal)
 
 @medico_bp.route('/eliminar_medico/<int:id>')
 def eliminar_medico(id):

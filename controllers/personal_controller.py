@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+from flask import Blueprint, render_template, request, redirect, url_for, session
 from database import db
 from models.personal import Personal
 from models.usuario import Usuario
@@ -30,16 +30,20 @@ def registrar_personal():
             db.session.add(nuevo_usuario)
             # Guarda ambas tablas juntas
             db.session.commit()
-            return render_template('registro_exitoso.html',nombre=nombre, apellidos=apellidos)
+            return render_template('personal/registro_exitoso_personal.html',nombre=nombre, apellidos=apellidos)
         except Exception as e:
             db.session.rollback()
             return f"Error al registrar: {str(e)}"
-    return render_template('registrar_personal.html')
+    return render_template('personal/registrar_personal.html')
 
 @personal_bp.route('/listar_personal')
 def listar_personal():
+    # Protección de acceso
+    if session.get('usuario_id') and session.get('rol') != 'Administrador':
+        return "Acceso denegado"
+
     lista_usuarios = Usuario.query.filter_by(estado=True).all()
-    return render_template('listar_personal.html',lista_personal=lista_usuarios)
+    return render_template('personal/listar_personal.html',lista_personal=lista_usuarios)
 
 @personal_bp.route('/editar_personal/<int:id>', methods=['GET', 'POST'])
 def editar_personal(id):
@@ -50,7 +54,7 @@ def editar_personal(id):
         personal.Telefono = request.form['telefono']
         db.session.commit()
         return redirect(url_for('personal.listar_personal'))
-    return render_template('editar_personal.html',personal=personal)
+    return render_template('personal/editar_personal.html',personal=personal)
 
 @personal_bp.route('/eliminar_personal/<int:id>')
 def eliminar_personal(id):

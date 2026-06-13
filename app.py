@@ -40,15 +40,15 @@ with app.app_context():
 
 @app.route('/')
 def inicio():
-    return render_template('index.html')
+    return render_template('principal/index.html')
 
 @app.route('/registro')
 def registro():
-    return render_template('registro_inicio.html')
+    return render_template('principal/registro_inicio.html')
 
 @app.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('auth/login.html')
 
 if __name__ == '__main__':
     app.run(debug=True)

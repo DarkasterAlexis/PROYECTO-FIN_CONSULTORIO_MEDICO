@@ -25,7 +25,7 @@ def login():
                 return "Rol no reconocido."
         else:
             return render_template('login.html',error='Usuario o contraseña incorrectos.')
-    return render_template('login.html')
+    return render_template('auth/login.html')
 
 @login_bp.route('/logout')
 def logout():
@@ -36,16 +36,16 @@ def logout():
 def dashboard_admin():
     if session.get('rol') != 'Administrador':
         return "Acceso denegado"
-    return render_template('dashboard_admin.html')
+    return render_template('dashboard/dashboard_admin.html')
 
 @login_bp.route('/dashboard_recepcionista')
 def dashboard_recepcionista():
     if session.get('rol') != 'Recepcionista':
         return "Acceso denegado"
-    return render_template('dashboard_recepcionista.html')
+    return render_template('dashboard/dashboard_recepcionista.html')
 
 @login_bp.route('/dashboard_medico')
 def dashboard_medico():
     if session.get('rol') != 'Medico':
         return "Acceso denegado"
-    return render_template('dashboard_medico.html')
+    return render_template('dashboard/dashboard_medico.html')
