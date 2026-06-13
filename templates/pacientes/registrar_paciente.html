@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registrar Paciente</title>
+</head>
+<body>
+    <h1>REGISTRO DE PACIENTES</h1>
+    <hr>
+    <form method="POST">
+        <label>CI:</label>
+        <input type="text" name="ci" required><br><br>
+        <label>Nombres:</label>
+        <input type="text" name="nombres" required><br><br>
+        <label>Apellidos:</label>
+        <input type="text" name="apellidos" required><br><br
+        <label>Fecha de Nacimiento:</label>
+        <input type="date" name="fecha_nacimiento"><br><br>
+        <label>Sexo:</label>
+        <select name="sexo" required>
+            <option value="">Seleccione...</option>
+            <option value="Masculino">Masculino</option>
+            <option value="Femenino">Femenino</option>
+        </select>
+        <br><br>
+        <label>Teléfono:</label>
+        <input type="text" name="telefono"><br><br>
+        <label>Dirección:</label>
+        <input type="text" name="direccion"><br><br>
+        <label>Correo:</label>
+        <input type="email" name="correo"><br><br>
+        <button type="submit">Guardar</button>
+    </form>
+    <br>
+    <a href="/dashboard_admin"><button>Cancelar</button></a>
+</body>
+</html>

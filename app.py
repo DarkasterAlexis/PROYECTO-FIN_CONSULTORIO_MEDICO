@@ -21,11 +21,13 @@ from models.personal import Personal
 from controllers.personal_controller import personal_bp
 from controllers.medico_controller import medico_bp
 from controllers.login_controller import login_bp
+from controllers.paciente_controller import paciente_bp
 
 #blueprints
 app.register_blueprint(personal_bp)
 app.register_blueprint(medico_bp)
 app.register_blueprint(login_bp)
+app.register_blueprint(paciente_bp)
 
 with app.app_context():
     db.create_all()

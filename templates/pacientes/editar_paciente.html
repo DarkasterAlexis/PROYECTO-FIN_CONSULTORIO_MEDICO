@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Paciente</title>
+</head>
+<body>
+    <h1>EDITAR PACIENTE</h1>
+    <form method="POST">
+        <label for="">CI: </label><br>
+        <input type="text" name="ci"value="{{ paciente.ci }}" required><br><br>
+        <label for="">Nombres: </label><br>
+        <input type="text" name="nombres"
+            value="{{ paciente.nombres }}" required><br><br>
+
+        <label for="">Apellidos: </label><br>
+        <input type="text" name="apellidos"
+            value="{{ paciente.apellidos }}" required><br><br>
+
+        <label for="">Fecha de nacimiento: </label><br>
+        <input type="date"
+            name="fecha_nacimiento"
+            value="{{ paciente.fecha_nacimiento }}"><br><br>
+
+        <label for="">Sexo: </label><br>
+        <select name="sexo">
+
+            <option value="Masculino"
+                {% if paciente.sexo=='Masculino' %}
+                selected
+                {% endif %}>
+                Masculino
+            </option>
+
+            <option value="Femenino"
+                {% if paciente.sexo=='Femenino' %}
+                selected
+                {% endif %}>
+                Femenino
+            </option>
+
+        </select><br><br>
+
+        <label for="">Teléfono: </label><br>
+        <input type="text"
+            name="telefono"
+            value="{{ paciente.telefono }}"><br><br>
+
+        <label for="">Dirección: </label><br>
+        <input type="text"
+            name="direccion"
+            value="{{ paciente.direccion }}"><br><br>
+
+        <label for="">Correo: </label><br>
+        <input type="email"
+            name="correo"
+            value="{{ paciente.correo }}"><br><br>
+
+        <button type="submit">
+            Actualizar
+        </button>
+
+    </form>
+
+    <br>
+
+    <a href="/listar_pacientes">
+        <button>Cancelar</button>
+    </a>
+</body>
+</html>

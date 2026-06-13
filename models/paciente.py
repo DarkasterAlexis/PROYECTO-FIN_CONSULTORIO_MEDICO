@@ -10,4 +10,5 @@ class Paciente(db.Model):
     telefono = db.Column(db.String(20))
     direccion = db.Column(db.String(200))
     correo = db.Column(db.String(100))
+    sexo = db.Column(db.String(20))
     estado = db.Column(db.Boolean,default=True)
