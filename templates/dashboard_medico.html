@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Médico</title>
+</head>
+<body>
+    <h1>Bienvenido Dr(a). {{ session['nombre'] }}</h1>
+    <h2>Panel Médico</h2>
+    <ul>
+        <li>Mis Pacientes</li>
+        <li>Consultas</li>
+        <li>Historial Clínico</li>
+        <li>Agenda Médica</li>
+    </ul>
+    <a href="/logout"><button>Cerrar Sesión</button></a>
+</body>
+</html>

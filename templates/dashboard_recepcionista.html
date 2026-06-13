@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recepcionista</title>
+</head>
+<body>
+    <h1>Bienvenido {{ session['nombre'] }}</h1>
+    <h2>Panel Recepcionista</h2>
+    <ul>
+        <li>Gestionar Pacientes</li>
+        <li>Gestionar Reservas</li>
+        <li>Agenda</li>
+    </ul>
+    <a href="/logout">
+        <button>Cerrar Sesión</button>
+    </a>
+</body>
+</html>
