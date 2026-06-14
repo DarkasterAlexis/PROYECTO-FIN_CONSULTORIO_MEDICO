@@ -142,3 +142,13 @@ def crear_cita_control(paciente_id, medico_id):
         db.session.commit()
         return redirect(url_for('cita.agenda_medica'))
     return render_template('citas/crear_cita_control.html',paciente=paciente,medico=medico)
+
+@cita_bp.route('/historial_atenciones')
+def historial_atenciones():
+    # Solo médicos
+    if session.get('rol') != 'Medico':
+        return "Acceso denegado"
+
+    medico_id = session.get('medico_id')
+    lista_atenciones = HistorialClinico.query.filter_by(CodMedico=medico_id).order_by(HistorialClinico.FechaAtencion.desc()).all()
+    return render_template('medico/historial_atenciones.html',atenciones=lista_atenciones)

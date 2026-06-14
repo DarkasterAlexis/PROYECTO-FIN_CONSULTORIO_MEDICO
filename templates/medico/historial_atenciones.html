@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial de Atenciones</title>
+</head>
+<body>
+    <h1>Historial de Atenciones</h1>
+    <h2>Dr(a). {{ session['nombre'] }}</h2>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Paciente</th>
+            <th>Motivo</th>
+            <th>Diagnóstico</th>
+            <th>Tratamiento</th>
+        </tr>
+        {% for atencion in atenciones %}
+        <tr>
+            <td>{{ atencion.Fecha }}</td>
+            <td>{{ atencion.paciente.nombres }} {{ atencion.paciente.apellidos }}</td>
+            <td>{{ atencion.Motivo }}</td>
+            <td>{{ atencion.Diagnostico }}</td>
+            <td>{{ atencion.Tratamiento }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="5">No existen atenciones registradas</td>
+        </tr>
+        {% endfor %}
+    </table><br>
+    <a href="/dashboard_medico"><button>Volver</butto></a>
+</body>
+</html>

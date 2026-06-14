@@ -18,6 +18,8 @@ from models.medico import Medico
 from models.personal import Personal
 from models.cita import Cita
 from models.historial_clinico import HistorialClinico
+from models.receta import Receta
+from models.detalle_receta import DetalleReceta
 
 #importar controladores
 from controllers.personal_controller import personal_bp
