@@ -32,9 +32,9 @@
         {% for cita in citas %}
         <tr>
             <td>{{ cita.CodCita }}</td>
-            <td>{{ cita.paciente.nombres }}{{ cita.paciente.apellidos }}</td>
+            <td>{{ cita.paciente.nombres }} {{ cita.paciente.apellidos }}</td>
             <td>{{ cita.paciente.ci }}</td>
-            <td>{{ cita.medico.personal.Nombre }}{{ cita.medico.personal.Apellidos }}</td>
+            <td>{{ cita.medico.personal.Nombre }} {{ cita.medico.personal.Apellidos }}</td>
             <td>{{ cita.medico.Especialidad }}</td>
             <td>{{ cita.Fecha }}</td>
             <td>{{ cita.Hora }}</td>

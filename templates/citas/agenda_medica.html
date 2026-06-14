@@ -15,6 +15,7 @@
             <th>CI</th>
             <th>Teléfono</th>
             <th>Motivo</th>
+            <th>Historial</th>
             <th>Acción</th>
         </tr>
         {% for cita in citas %}
@@ -24,7 +25,8 @@
             <td>{{ cita.paciente.ci }}</td>
             <td>{{ cita.paciente.telefono }}</td>
             <td>{{ cita.Motivo }}</td>
-            <td><button disabled>Iniciar Atención(Próximamente)</button></td>
+            <td><a href="/historial_paciente/{{ cita.CodPaciente }}"><button>Historial</button></a></td>
+            <td><a href="/iniciar_atencion/{{ cita.CodCita }}"><button>Iniciar Atención</button></a></td>   
         </tr>
         {% endfor %}
     </table>

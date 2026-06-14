@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atención Médica</title>
+</head>
+<body>
+    <h1>ATENCIÓN MÉDICA</h1>
+    <h2>Datos del paciente</h2>
+    <p>
+        <label for="">Paciente:</label>
+        <b>{{ cita.paciente.nombres }} {{ cita.paciente.apellidos }}</b>
+    </p>
+    <p>
+        <label for="">CI:</label>
+        {{ cita.paciente.ci }}
+    </p>
+    <p>
+        <label for="">Teléfono:</label>
+        {{ cita.paciente.telefono }}
+    </p>
+    <hr>
+    <h2>Consulta</h2>
+    <form method="POST">
+        <label>Motivo de consulta</label><br>
+        <textarea name="motivo_consulta"required></textarea><br><br>
+        <label>Diagnóstico</label><br>
+        <textarea name="diagnostico"required></textarea><br><br>
+        <label>Tratamiento</label><br>
+        <textarea name="tratamiento"required></textarea><br><br>
+        <label>Observaciones</label><br>
+        <textarea name="observaciones"></textarea><br><br>
+        <button type="submit">Guardar Atención</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historial Clínico</title>
+</head>
+<body>
+    <h1>Historial Clínico</h1>
+    <h2>
+        <label for="">Paciente:</label>
+        {{ paciente.nombres }} {{ paciente.apellidos }}
+    </h2>
+    <p>
+        <label for="">CI:</label>
+        {{ paciente.ci }}
+    </p>
+    <hr>
+    {% if historial %}
+    {% for registro in historial %}
+    <h3>
+        <label for="">Fecha:</label>
+        {{ registro.FechaAtencion }}</h3>
+    <p>
+        <strong>Motivo:</strong>
+        {{ registro.MotivoConsulta }}
+    </p>
+    <p>
+        <strong>Diagnóstico:</strong>
+        {{ registro.Diagnostico }}
+    </p>
+    <p>
+        <strong>Tratamiento:</strong>
+        {{ registro.Tratamiento }}
+    </p>
+    <p>
+        <strong>Observaciones:</strong>
+        {{ registro.Observaciones }}
+    </p>
+    <hr>
+    {% endfor %}
+    {% else %}
+    <p>Este paciente no tiene historial clínico.</p>
+    {% endif %}
+    <a href="/agenda_medica"><button>Volver</button></a>
+</body>
+</html>

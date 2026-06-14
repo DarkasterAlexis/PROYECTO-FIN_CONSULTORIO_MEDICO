@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Atención Finalizada</title>
+</head>
+<body>
+    <h1>ATENCIÓN FINALIZADA</h1>
+    <p>
+        <label for="">Paciente:</label>
+        <strong>{{ cita.paciente.nombres }} {{ cita.paciente.apellidos }}</strong>
+    </p>
+    <p>La consulta fue registrada correctamente.</p>
+    <h3>¿Desea programar una cita de control?</h3>
+    <a href="/crear_cita_control/{{ cita.CodPaciente }}/{{ cita.CodMedico }}"><button>Sí, programar control</button></a>
+    <br><br>
+    <a href="/dashboard_medico"><button>No, volver al menú</button></a>
+</body>
+</html>

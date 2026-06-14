@@ -4,6 +4,7 @@ from models.cita import Cita
 from models.paciente import Paciente
 from models.medico import Medico
 from models.usuario import Usuario
+from models.historial_clinico import HistorialClinico
 from datetime import datetime, date
 
 cita_bp = Blueprint('cita', __name__)
@@ -80,3 +81,64 @@ def agenda_medica():
     hoy = date.today()
     citas = Cita.query.filter(Cita.CodMedico == medico.CodMedico,Cita.Fecha == hoy,Cita.Estado == 'Confirmada').order_by(Cita.Hora).all()
     return render_template('citas/agenda_medica.html',citas=citas)
+
+@cita_bp.route('/iniciar_atencion/<int:id>', methods=['GET','POST'])
+def iniciar_atencion(id):
+    if session.get('rol') != 'Medico':
+        return "Acceso denegado"
+    cita = Cita.query.get_or_404(id)
+    if request.method == 'POST':
+        nuevo_historial = HistorialClinico(
+            paciente_id=cita.CodPaciente,
+            CodMedico=cita.CodMedico,
+            CodCita=cita.CodCita,
+            MotivoConsulta=request.form['motivo_consulta'],
+            Diagnostico=request.form['diagnostico'],
+            Tratamiento=request.form['tratamiento'],
+            Observaciones=request.form['observaciones']
+        )
+        db.session.add(nuevo_historial)
+        # cambia la cita de Confirmada a Atendida
+        cita.Estado = "Atendida"
+        db.session.commit()
+        return redirect(url_for('cita.finalizar_atencion',id=cita.CodCita))
+    return render_template('citas/iniciar_atencion.html',cita=cita)
+
+@cita_bp.route('/historial_paciente/<int:id>')
+def historial_paciente(id):
+    if session.get('rol') != 'Medico':
+        return "Acceso denegado"
+
+    paciente = Paciente.query.get_or_404(id)
+    historial = HistorialClinico.query.filter_by(paciente_id=id).order_by(HistorialClinico.FechaAtencion.desc()).all()
+    return render_template('citas/historial_paciente.html',paciente=paciente,historial=historial)
+
+@cita_bp.route('/finalizar_atencion/<int:id>')
+def finalizar_atencion(id):
+    if session.get('rol') != 'Medico':
+        return "Acceso denegado"
+
+    cita = Cita.query.get_or_404(id)
+    return render_template('citas/finalizar_atencion.html',cita=cita)
+
+@cita_bp.route('/crear_cita_control/<int:paciente_id>/<int:medico_id>',methods=['GET','POST'])
+def crear_cita_control(paciente_id, medico_id):
+    if session.get('rol') != 'Medico':
+        return "Acceso denegado"
+
+    paciente = Paciente.query.get_or_404(paciente_id)
+    medico = Medico.query.get_or_404(medico_id)
+    if request.method == 'POST':
+        nueva_cita = Cita(
+            CodPaciente=paciente_id,
+            CodMedico=medico_id,
+            Fecha=datetime.strptime(request.form['fecha'],'%Y-%m-%d').date(),
+            Hora=datetime.strptime(request.form['hora'],'%H:%M').time(),
+            Motivo=request.form['motivo'],
+            Estado='Pendiente',
+            Origen='Medico'
+        )
+        db.session.add(nueva_cita)
+        db.session.commit()
+        return redirect(url_for('cita.agenda_medica'))
+    return render_template('citas/crear_cita_control.html',paciente=paciente,medico=medico)

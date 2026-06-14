@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cita de Control</title>
+</head>
+<body>
+    <h1>Nueva Cita de Control</h1>
+    <p>
+        <label for="">Paciente:</label>
+        <strong>{{ paciente.nombres }} {{ paciente.apellidos }}</strong>
+    </p>
+    <p>
+        <label for="">Médico:</label>
+        <strong>{{ medico.personal.Nombre }} {{ medico.personal.Apellidos }}</strong>
+    </p>
+    <form method="POST">
+        <label for="">Fecha:</label>
+        <input type="date"name="fecha"required><br><br>
+        <label for="">Hora:</label>
+        <input type="time"name="hora"required><br><br>
+        <label for="">Motivo:</label>
+        <textarea name="motivo"required>Control médico</textarea>
+        <br><br>
+        <button type="submit">Enviar a Recepción</button>
+    </form>
+</body>
+</html>
