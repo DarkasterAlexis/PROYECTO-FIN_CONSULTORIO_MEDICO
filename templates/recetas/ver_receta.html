@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receta Médica</title>
+</head>
+<body>
+    <h1>Receta Médica</h1>
+    <hr>
+    <h3>Paciente:{{ receta.paciente.nombres }} {{ receta.paciente.apellidos }}</h3>
+    <h3>Médico:Dr(a).{{ receta.medico.personal.Nombre }}</h3>
+    <p>Fecha:{{ receta.Fecha }}</p>
+    <hr>
+    <h2>Medicamentos</h2>
+    <table border="1">
+        <tr>
+            <th>Medicamento</th>
+            <th>Dosis</th>
+            <th>Frecuencia</th>
+            <th>Duración</th>
+            <th>Indicaciones</th>
+        </tr>
+        {% for detalle in receta.detalles %}
+        <tr>
+            <td>{{ detalle.Medicamento }}</td>
+            <td>{{ detalle.Dosis }}</td>
+            <td>{{ detalle.Frecuencia }}</td>
+            <td>{{ detalle.Duracion }}</td>
+            <td>{{ detalle.Indicaciones }}</td>
+        </tr>
+        {% endfor %}
+    </table><br>
+    <h3>Observaciones</h3>
+    <p>{{ receta.Observaciones }}</p>
+    <a href="/dashboard_medico">Volver</a>
+</body>
+</html>

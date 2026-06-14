@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crear Receta Médica</title>
+</head>
+<body>
+    <h1>
+    Nueva Receta Médica
+    </h1>
+    <hr>
+    <h3>Paciente:{{ paciente.nombres }} {{ paciente.apellidos }}</h3>
+    <h3>Médico:Dr(a). {{ medico.personal.Nombre }}</h3>
+    <form method="POST">
+        <h2>Medicamento</h2>
+        <label>Nombre medicamento:</label>
+        <input type="text"name="medicamento"required><br><br>
+        <label>Dosis:</label>
+        <input type="text"name="dosis"><br><br>
+        <label>Frecuencia:</label>
+        <input type="text"name="frecuencia"><br><br>
+        <label>Duración:</label>
+        <input type="text"name="duracion"><br><br>
+        <label>Indicaciones:</label>
+        <textarea name="indicaciones"></textarea><br><br>
+        <label>Observaciones:</label>
+        <textareaname="observaciones"></textarea><br><br>
+        <button type="submit">Guardar Receta</button>
+    </form><br>
+    <a href="/agenda_medica">Volver</a>
+</body>
+</html>

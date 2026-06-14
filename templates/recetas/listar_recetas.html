@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>REcetas Médicas</title>
+</head>
+<body>
+    <h1>Recetas Médicas</h1>
+    <h2>Dr(a). {{ session['nombre'] }}</h2>
+    <hr>
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Paciente</th>
+            <th>Estado</th>
+            <th>Acción</th>
+        </tr>
+        {% for receta in recetas %}
+        <tr>
+            <td>{{ receta.Fecha }}</td>
+            <td>{{ receta.paciente.nombres }}{{ receta.paciente.apellidos }}</td>
+            <td>{{ receta.Estado }}</td>
+            <td><a href="/ver_receta/{{ receta.RecetaID }}"><button>Ver Receta</button></a></td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="4">No existen recetas registradas</td>
+        </tr>
+        {% endfor %}
+    </table><br>
+    <a href="/dashboard_medico"><button>Volver</button></a>
+</body>
+</html>

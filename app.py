@@ -27,6 +27,7 @@ from controllers.medico_controller import medico_bp
 from controllers.login_controller import login_bp
 from controllers.paciente_controller import paciente_bp
 from controllers.cita_controller import cita_bp
+from controllers.receta_controller import receta_bp
 
 #blueprints
 app.register_blueprint(personal_bp)
@@ -34,6 +35,7 @@ app.register_blueprint(medico_bp)
 app.register_blueprint(login_bp)
 app.register_blueprint(paciente_bp)
 app.register_blueprint(cita_bp)
+app.register_blueprint(receta_bp)
 
 with app.app_context():
     db.create_all()
