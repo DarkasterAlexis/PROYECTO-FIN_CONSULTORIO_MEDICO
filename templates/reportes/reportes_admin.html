@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes Administrativos</title>
+</head>
+<body>
+    <h1>Reportes Administrativos</h1>
+    <hr>
+    <h2>Pacientes</h2>
+    <table border="1">
+        <tr>
+            <th>Total Pacientes</th>
+            <th>Pacientes Activos</th>
+        </tr>
+        <tr>
+            <td>{{ total_pacientes }}</td>
+            <td>{{ pacientes_activos }}</td>
+        </tr>
+    </table><br>
+    <h2>Personal y Médicos</h2>
+    <table border="1">
+        <tr>
+            <th>Total Personal</th>
+            <th>Total Médicos</th>
+        </tr>
+        <tr>
+            <td>{{ total_personal }}</td>
+            <td>{{ total_medicos }}</td>
+        </tr>
+    </table><br>
+    <h2>Citas Médicas</h2>
+    <table border="1">
+        <tr>
+            <th>Total Citas</th>
+            <th>Confirmadas</th>
+            <th>Canceladas</th>
+        </tr>
+        <tr>
+            <td>{{ total_citas }}</td>
+            <td>{{ citas_confirmadas }}</td>
+            <td>{{ citas_canceladas }}</td>
+        </tr>
+    </table><br><br>
+    <a href="/dashboard_admin"><button>Volver</button></a>
+</body>
+</html>

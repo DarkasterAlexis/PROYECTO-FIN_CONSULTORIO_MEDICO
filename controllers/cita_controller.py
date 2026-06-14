@@ -152,3 +152,19 @@ def historial_atenciones():
     medico_id = session.get('medico_id')
     lista_atenciones = HistorialClinico.query.filter_by(CodMedico=medico_id).order_by(HistorialClinico.FechaAtencion.desc()).all()
     return render_template('medico/historial_atenciones.html',atenciones=lista_atenciones)
+
+@cita_bp.route('/agenda_recepcion')
+def agenda_recepcion():
+    # Solo Recepción y Administrador pueden acceder
+    if session.get('rol') not in ['Recepcionista', 'Administrador']:
+        return "Acceso denegado"
+
+    hoy = date.today()
+    citas = Cita.query.filter(Cita.Fecha == hoy).order_by(Cita.Hora).all()
+    total = len(citas)
+    confirmadas = sum(1 for cita in citas if cita.Estado == 'Confirmada')
+    pendientes = sum(1 for cita in citas if cita.Estado == 'Pendiente')
+    atendidas = sum(1 for cita in citas if cita.Estado == 'Atendida')
+    canceladas = sum(1 for cita in citas if cita.Estado == 'Cancelada')
+    return render_template('citas/agenda_recepcion.html',citas=citas,total=total,confirmadas=confirmadas,
+        pendientes=pendientes,atendidas=atendidas,canceladas=canceladas,fecha=hoy)

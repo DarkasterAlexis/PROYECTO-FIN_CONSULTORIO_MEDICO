@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reportes Médicos</title>
+</head>
+<body>
+    <h1>Reportes Médicos</h1>
+    <hr>
+    <h2>Atenciones realizadas</h2>
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Paciente</th>
+            <th>Diagnóstico</th>
+        </tr>
+        {% for atencion in atenciones %}
+        <tr>
+            <td>{{ atencion.Fecha }}</td>
+            <td>{{ atencion.paciente.nombres }} {{ atencion.paciente.apellidos }}</td>
+            <td>{{ atencion.Diagnostico }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="3">No hay atenciones registradas</td>
+        </tr>
+        {% endfor %}
+    </table><br>
+    <h2>Recetas generadas</h2>
+    <table border="1">
+        <tr>
+            <th>Fecha</th>
+            <th>Paciente</th>
+        </tr>
+        {% for receta in recetas %}
+        <tr>
+            <td>{{ receta.Fecha }}</td>
+            <td>{{ receta.paciente.nombres }} {{ receta.paciente.apellidos }}</td>
+        </tr>
+        {% else %}
+        <tr>
+            <td colspan="2">No existen recetas</td>
+        </tr>
+        {% endfor %}
+    </table><br>
+    <a href="/dashboard_medico"><button>Volver</button></a>
+</body>
+</html>
