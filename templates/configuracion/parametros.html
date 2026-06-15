@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Parámetros</title>
+</head>
+<body>
+    <h1>Parámetros del Sistema</h1>
+    <table border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Valor</th>
+        </tr>
+        {% for parametro in parametros %}
+        <tr>
+            <td>{{ parametro.nombre }}</td>
+            <td>{{ parametro.valor }}</td>
+        </tr>
+        {% endfor %}
+    </table><br>
+    <a href="/configuracion"><button>Volver</button></a>
+</body>
+</html>

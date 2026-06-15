@@ -20,6 +20,8 @@ from models.cita import Cita
 from models.historial_clinico import HistorialClinico
 from models.receta import Receta
 from models.detalle_receta import DetalleReceta
+from models.parametro import Parametro
+from models.consultorio import Consultorio
 
 #importar controladores
 from controllers.personal_controller import personal_bp
@@ -29,6 +31,7 @@ from controllers.paciente_controller import paciente_bp
 from controllers.cita_controller import cita_bp
 from controllers.receta_controller import receta_bp
 from controllers.reporte_controller import reporte_bp
+from controllers.configuracion_controller import config_bp
 
 #blueprints
 app.register_blueprint(personal_bp)
@@ -38,6 +41,7 @@ app.register_blueprint(paciente_bp)
 app.register_blueprint(cita_bp)
 app.register_blueprint(receta_bp)
 app.register_blueprint(reporte_bp)
+app.register_blueprint(config_bp)
 
 with app.app_context():
     db.create_all()
