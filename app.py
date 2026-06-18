@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, flash, redirect
 from database import db
 
 app = Flask(__name__)
@@ -56,10 +56,18 @@ with app.app_context():
 
 @app.route('/')
 def inicio():
-    return render_template('principal/index.html')
+    existe_usuario = Usuario.query.first()
+    return render_template('principal/index.html', 
+                            mostrar_login = existe_usuario is not None, 
+                            mostrar_registro = existe_usuario is None)
 
 @app.route('/registro')
 def registro():
+    if Usuario.query.count() > 0:
+        flash("El registro inicial ya fue realizado.")
+        return redirect('/login')
+    
+    print("Registrando administrador")
     return render_template('principal/registro_inicio.html')
 
 @app.route('/login')
