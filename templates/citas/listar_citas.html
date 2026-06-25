@@ -4,59 +4,260 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lista de Citas</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/listar_citas.css') }}">
 </head>
+
 <body>
-    <h1>LISTA DE CITAS</h1>
-    <hr>
-    <a href="/registrar_cita"><button>Nueva Cita</button></a>
-    {% if session['rol'] == 'Administrador' %}
-        <a href="/dashboard_admin"><button>Volver al Menu</button></a>
-    {% else %}
-        <a href="/dashboard_recepcionista"><button>Volver al Menu</button></a>
-    {% endif %}
-    <br><br>
-    <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Paciente</th>
-            <th>CI</th>
-            <th>Médico</th>
-            <th>Especialidad</th>
-            <th>Fecha</th>
-            <th>Hora</th>
-            <th>Motivo</th>
-            <th>Estado</th>
-            <th>Origen</th>
-            <th>Acciones</th>
-        </tr>
-        {% for cita in citas %}
-        <tr>
-            <td>{{ cita.CodCita }}</td>
-            <td>{{ cita.paciente.nombres }} {{ cita.paciente.apellidos }}</td>
-            <td>{{ cita.paciente.ci }}</td>
-            <td>{{ cita.medico.personal.Nombre }} {{ cita.medico.personal.Apellidos }}</td>
-            <td>{{ cita.medico.Especialidad }}</td>
-            <td>{{ cita.Fecha }}</td>
-            <td>{{ cita.Hora }}</td>
-            <td>{{ cita.Motivo }}</td>
-            <td>{{ cita.Estado }}</td>
-            <td>{{ cita.Origen }}</td>
-            <td>
-                {% if cita.Estado != 'Atendida' and cita.Estado != 'Cancelada' %}
-                    <a href="/editar_cita/{{ cita.CodCita }}"><button>Editar</button></a>
-                {% endif %}
-                {% if cita.Estado == 'Pendiente' %}
-                    <a href="/confirmar_cita/{{ cita.CodCita }}"
-                    onclick="return confirm('¿Confirmar esta cita?')"><button>Confirmar</button></a>
-                {% endif %}
-                {% if cita.Estado != 'Cancelada'
-                    and cita.Estado != 'Atendida' %}
-                    <a href="/cancelar_cita/{{ cita.CodCita }}"
-                    onclick="return confirm('¿Cancelar esta cita?')"><button>Cancelar</button></a>
-                {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </ble>
+
+<div class="overlay">
+
+    <div class="container py-5">
+
+        <div class="card shadow-lg">
+
+            <div class="card-body p-4">
+
+                <div class="text-center mb-4">
+
+                    <h1 class="titulo-principal">
+                        LISTA DE CITAS
+                    </h1>
+
+                    <p class="mensaje">
+                        Gestión de citas médicas del Consultorio Médico ARANDA.
+                    </p>
+
+                </div>
+
+                <!-- Botones superiores -->
+                <div class="d-flex flex-wrap justify-content-between align-items-center gap-2 mb-4">
+
+                    <a href="/registrar_cita"
+                       class="btn btn-success btn-lg boton-sonido efecto-sonido">
+
+                        <i class="bi bi-calendar-plus-fill"></i>
+                        Nueva Cita
+
+                    </a>
+
+                    {% if session['rol'] == 'Administrador' %}
+
+                        <a href="/dashboard_admin"
+                           class="btn btn-secondary btn-lg boton-sonido efecto-sonido">
+
+                            <i class="bi bi-arrow-left-circle-fill"></i>
+                            Volver al Panel
+
+                        </a>
+
+                    {% else %}
+
+                        <a href="/dashboard_recepcionista"
+                           class="btn btn-secondary btn-lg boton-sonido efecto-sonido">
+
+                            <i class="bi bi-arrow-left-circle-fill"></i>
+                            Volver al Panel
+
+                        </a>
+
+                    {% endif %}
+
+                </div>
+
+                <!-- Tabla -->
+                <div class="table-responsive">
+
+                    <table class="table table-hover align-middle text-center">
+
+                        <thead class="table-primary">
+
+                            <tr>
+                                <th>ID</th>
+                                <th>Paciente</th>
+                                <th>CI</th>
+                                <th>Médico</th>
+                                <th>Especialidad</th>
+                                <th>Fecha</th>
+                                <th>Hora</th>
+                                <th>Motivo</th>
+                                <th>Estado</th>
+                                <th>Origen</th>
+                                <th>Acciones</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+
+                            {% for cita in citas %}
+
+                            <tr>
+
+                                <td>
+                                    CIT{{ "%03d"|format(cita.CodCita) }}
+                                </td>
+
+                                <td>
+                                    {{ cita.paciente.nombres }}
+                                    {{ cita.paciente.apellidos }}
+                                </td>
+
+                                <td>
+                                    {{ cita.paciente.ci }}
+                                </td>
+
+                                <td>
+                                    {{ cita.medico.personal.Nombre }}
+                                    {{ cita.medico.personal.Apellidos }}
+                                </td>
+
+                                <td>
+                                    {{ cita.medico.Especialidad }}
+                                </td>
+
+                                <td>
+                                    {{ cita.Fecha }}
+                                </td>
+
+                                <td>
+                                    {{ cita.Hora }}
+                                </td>
+
+                                <td>
+                                    {{ cita.Motivo }}
+                                </td>
+
+                                <!-- Estado -->
+                                <td>
+
+                                    {% if cita.Estado == 'Pendiente' %}
+
+                                        <span class="badge bg-warning text-dark">
+                                            Pendiente
+                                        </span>
+
+                                    {% elif cita.Estado == 'Confirmada' %}
+
+                                        <span class="badge bg-primary">
+                                            Confirmada
+                                        </span>
+
+                                    {% elif cita.Estado == 'Atendida' %}
+
+                                        <span class="badge bg-success">
+                                            Atendida
+                                        </span>
+
+                                    {% elif cita.Estado == 'Cancelada' %}
+
+                                        <span class="badge bg-danger">
+                                            Cancelada
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="badge bg-secondary">
+                                            {{ cita.Estado }}
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                                <!-- Origen -->
+                                <td>
+
+                                    {% if cita.Origen == 'Recepcion' %}
+
+                                        <span class="badge bg-info text-dark">
+                                            Recepción
+                                        </span>
+
+                                    {% else %}
+
+                                        <span class="badge bg-secondary">
+                                            {{ cita.Origen }}
+                                        </span>
+
+                                    {% endif %}
+
+                                </td>
+
+                                <!-- Acciones -->
+                                <td>
+
+                                    {% if cita.Estado != 'Atendida'
+                                          and cita.Estado != 'Cancelada' %}
+
+                                        <a href="/editar_cita/{{ cita.CodCita }}"
+                                           class="btn btn-warning btn-sm boton-sonido efecto-sonido"
+                                           title="Editar">
+
+                                            <i class="bi bi-pencil-fill"></i>
+
+                                        </a>
+
+                                    {% endif %}
+
+                                    {% if cita.Estado == 'Pendiente' %}
+
+                                        <a href="/confirmar_cita/{{ cita.CodCita }}"
+                                           class="btn btn-success btn-sm boton-sonido efecto-sonido"
+                                           title="Confirmar"
+                                           onclick="return confirm('¿Confirmar esta cita?')">
+
+                                            <i class="bi bi-check-circle-fill"></i>
+
+                                        </a>
+
+                                    {% endif %}
+
+                                    {% if cita.Estado != 'Cancelada'
+                                          and cita.Estado != 'Atendida' %}
+
+                                        <a href="/cancelar_cita/{{ cita.CodCita }}"
+                                           class="btn btn-danger btn-sm boton-sonido efecto-sonido"
+                                           title="Cancelar"
+                                           onclick="return confirm('¿Cancelar esta cita?')">
+
+                                            <i class="bi bi-x-circle-fill"></i>
+
+                                        </a>
+
+                                    {% endif %}
+
+                                </td>
+
+                            </tr>
+
+                            {% endfor %}
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
 </body>
 </html>

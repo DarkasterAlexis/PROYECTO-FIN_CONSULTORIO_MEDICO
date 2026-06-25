@@ -1,0 +1,114 @@
+body{
+
+    margin:0;
+    min-height:100vh;
+
+    background-image:url("../img/personal.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    font-family:Arial,sans-serif;
+
+}
+
+.overlay{
+
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+
+}
+
+
+
+.parametros-card{
+
+    border:none;
+
+    border-radius:20px;
+
+}
+
+
+
+.titulo-principal{
+
+    color:#0d6efd;
+
+    font-weight:bold;
+
+}
+
+
+
+.mensaje{
+
+    color:#666;
+
+}
+
+
+
+.icono-principal{
+
+    font-size:4rem;
+
+    color:#0d6efd;
+
+}
+
+
+
+.table{
+
+    overflow:hidden;
+
+    border-radius:15px;
+
+}
+
+
+
+.table tbody tr{
+
+    transition:0.3s;
+
+}
+
+
+
+.table tbody tr:hover{
+
+    transform:scale(1.02);
+
+}
+
+
+
+.valor{
+
+    font-size:1rem;
+
+    padding:10px 18px;
+
+}
+
+
+
+.btn{
+
+    transition:0.25s;
+
+}
+
+
+
+.btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:0 8px 18px rgba(0,0,0,0.2);
+
+}

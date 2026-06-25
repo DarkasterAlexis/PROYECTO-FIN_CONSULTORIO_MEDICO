@@ -1,0 +1,60 @@
+body{
+    margin:0;
+    min-height:100vh;
+
+    background-image:url("../img/personal.jpg");
+    background-size:cover;
+    background-position:center;
+    background-repeat:no-repeat;
+
+    font-family:Arial, sans-serif;
+}
+
+.overlay{
+    min-height:100vh;
+
+    display:flex;
+    align-items:center;
+}
+
+.card{
+    border:none;
+    border-radius:20px;
+}
+
+.titulo-principal{
+    color:#0d6efd;
+    font-weight:bold;
+}
+
+.mensaje{
+    color:#555;
+}
+
+.table{
+    border-radius:15px;
+    overflow:hidden;
+}
+
+.table tbody tr{
+    transition:all 0.2s ease;
+}
+
+.table tbody tr:hover{
+    transform:scale(1.01);
+}
+
+.badge{
+    font-size:0.9rem;
+    padding:8px 12px;
+}
+
+.btn{
+    transition:all 0.25s ease;
+}
+
+.btn:hover{
+    transform:translateY(-2px);
+
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}

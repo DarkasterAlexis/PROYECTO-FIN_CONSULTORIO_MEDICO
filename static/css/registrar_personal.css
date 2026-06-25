@@ -1,0 +1,69 @@
+body{
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.55)
+        ),
+        url("../img/registropersonal.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 30px 15px;
+}
+
+.formulario-card{
+    max-width: 600px;
+    width: 100%;
+    border: none;
+    border-radius: 25px;
+    background-color: rgba(10, 161, 10, 0.703);
+}
+
+.titulo-principal{
+    color: #04321d;
+    font-weight: bold;
+}
+
+.mensaje{
+    color: darkblue;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.form-control,
+.form-select{
+    border-radius: 12px;
+}
+
+.efecto-sonido{
+    transition: all 0.25s ease;
+}
+
+.efecto-sonido:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.efecto-sonido:active{
+    transform: translateY(0);
+}
+
+.nombrelabop{
+    font-weight: bold;
+    font-size: 120%;
+    color: #0d6efd;
+    text-shadow:
+        -1px -1px 0 #ffffff,
+         1px -1px 0 #ffffff,
+        -1px  1px 0 #ffffff,
+         3px  3px 0 #ffffff;
+}

@@ -1,32 +1,176 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Editar Médico</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/editar_medico.css') }}">
 </head>
+
 <body>
-    <h1>EDITAR MÉDICO</h1>
-    <form method="POST">
-        <h3>Datos Personales</h3>
-        <label>Nombre:</label>
-        <input type="text"name="nombre"value="{{ personal.Nombre }}"required>
-        <br><br>
-        <label>Apellidos:</label>
-        <input type="text"name="apellidos"value="{{ personal.Apellidos }}"required>
-        <br><br>
-        <label>Teléfono:</label>
-        <input type="text"name="telefono"value="{{ personal.Telefono }}">
-        <br><br>
-        <h3>Datos Médicos</h3>
-        <label>Especialidad:</label>
-        <input type="text"name="especialidad"value="{{ medico.Especialidad }}"required>
-        <br><br>
-        <label>Matrícula Profesional:</label>
-        <input type="text"name="matricula"value="{{ medico.MatriculaProfesional }}"required>
-        <br><br>
-        <button type="submit">Guardar Cambios</button>
-        <a href="{{ url_for('medico.listar_medicos') }}"><button type="button">Cancelar</button></a>
-    </form>
+
+    <div class="overlay">
+
+        <div class="container py-5">
+
+            <div class="card shadow-lg formulario-card">
+
+                <div class="card-body p-5">
+
+                    <div class="text-center mb-4">
+
+                        <h2 class="titulo-principal">
+                            EDITAR MÉDICO
+                        </h2>
+
+                        <p class="mensaje">
+                            Actualice la información del médico registrado.
+                        </p>
+
+                    </div>
+
+                    <form method="POST">
+
+                        <!-- DATOS PERSONALES -->
+
+                        <div class="seccion mb-4">
+
+                            <h4 class="subtitulo">
+                                <i class="bi bi-person-fill"></i>
+                                Datos Personales
+                            </h4>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Nombre
+                                </label>
+
+                                <input type="text"
+                                    class="form-control"
+                                    name="nombre"
+                                    value="{{ personal.Nombre }}"
+                                    required>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Apellidos
+                                </label>
+
+                                <input type="text"
+                                    class="form-control"
+                                    name="apellidos"
+                                    value="{{ personal.Apellidos }}"
+                                    required>
+
+                            </div>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Teléfono
+                                </label>
+
+                                <input type="text"
+                                    class="form-control"
+                                    name="telefono"
+                                    value="{{ personal.Telefono }}">
+
+                            </div>
+
+                        </div>
+
+                        <!-- DATOS MEDICOS -->
+
+                        <div class="seccion mb-4">
+
+                            <h4 class="subtitulo">
+                                <i class="bi bi-heart-pulse-fill"></i>
+                                Datos Médicos
+                            </h4>
+
+                            <div class="mb-3">
+
+                                <label class="form-label">
+                                    Especialidad
+                                </label>
+
+                                <input type="text"
+                                    class="form-control"
+                                    name="especialidad"
+                                    value="{{ medico.Especialidad }}"
+                                    required>
+
+                            </div>
+
+                            <div class="mb-4">
+
+                                <label class="form-label">
+                                    Matrícula Profesional
+                                </label>
+
+                                <input type="text"
+                                    class="form-control"
+                                    name="matricula"
+                                    value="{{ medico.MatriculaProfesional }}"
+                                    required>
+
+                            </div>
+
+                        </div>
+
+                        <!-- BOTONES -->
+
+                        <div class="d-grid gap-3">
+
+                            <button type="submit"
+                                    class="btn btn-success btn-lg efecto-sonido">
+
+                                <i class="bi bi-save-fill"></i>
+                                Guardar Cambios
+
+                            </button>
+
+                            <a href="{{ url_for('medico.listar_medicos') }}"
+                            class="text-decoration-none boton-sonido">
+
+                                <button type="button"
+                                        class="btn btn-secondary btn-lg w-100 efecto-sonido">
+
+                                    <i class="bi bi-arrow-left-circle-fill"></i>
+                                    Cancelar
+
+                                </button>
+
+                            </a>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
 </body>
 </html>

@@ -21,7 +21,13 @@ def registrar_cita():
         fecha = datetime.strptime(request.form['fecha'],'%Y-%m-%d').date()
         hora = datetime.strptime(request.form['hora'],'%H:%M').time()
         motivo = request.form['motivo']
-        nueva_cita = Cita(CodPaciente=paciente_id,CodMedico=medico_id,Fecha=fecha,Hora=hora,Motivo=motivo,Estado='Confirmada',Origen='Recepcion')
+        nueva_cita = Cita(CodPaciente=paciente_id,
+                          CodMedico=medico_id,
+                          Fecha=fecha,
+                          Hora=hora,
+                          Motivo=motivo,
+                          Estado='Confirmada',
+                          Origen='Recepcion')
         db.session.add(nueva_cita)
         db.session.commit()
         return redirect(url_for('cita.listar_citas'))
@@ -119,7 +125,8 @@ def finalizar_atencion(id):
         return "Acceso denegado"
 
     cita = Cita.query.get_or_404(id)
-    return render_template('citas/finalizar_atencion.html',cita=cita)
+    historial = HistorialClinico.query.filter_by(CodCita=id).first()
+    return render_template('citas/finalizar_atencion.html',cita=cita,historial=historial)
 
 @cita_bp.route('/crear_cita_control/<int:paciente_id>/<int:medico_id>',methods=['GET','POST'])
 def crear_cita_control(paciente_id, medico_id):
@@ -148,6 +155,10 @@ def historial_atenciones():
     # Solo médicos
     if session.get('rol') != 'Medico':
         return "Acceso denegado"
+    
+    print("ROL:", session.get('rol'))
+    print("USUARIO ID:", session.get('usuario_id'))
+    print("MEDICO_ID:", session.get('medico_id'))
 
     medico_id = session.get('medico_id')
     lista_atenciones = HistorialClinico.query.filter_by(CodMedico=medico_id).order_by(HistorialClinico.FechaAtencion.desc()).all()

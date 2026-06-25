@@ -1,0 +1,125 @@
+body{
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    
+}
+
+.wrapper{
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+
+.sidebar{
+    width: 260px;
+
+    background: linear-gradient(
+        180deg,
+        #0d6efd,
+        #084298
+    );
+
+    color: white;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar-header{
+    padding: 30px 20px;
+    text-align: center;
+}
+
+.sidebar-header h3{
+    margin: 0;
+    font-weight: bold;
+}
+
+.sidebar nav{
+    flex: 1;
+}
+
+.menu-item{
+    display: block;
+
+    color: white;
+
+    text-decoration: none;
+
+    padding: 15px 25px;
+
+    transition: all 0.25s ease;
+}
+
+.menu-item i{
+    margin-right: 10px;
+}
+
+.menu-item:hover{
+    background-color: rgba(255,255,255,0.15);
+
+    border-left: 4px solid white;
+
+    transform: translateX(5px);
+}
+
+.logout{
+    padding: 20px;
+}
+
+/* Contenido */
+
+.contenido{
+    flex: 1;
+    padding: 40px;
+    background-image: url("../img/dashboard_medico.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+
+.bienvenida{
+    margin-bottom: 40px;
+}
+
+.bienvenida h1{
+    color: #095fdf;
+    font-weight: bold;
+    text-shadow:
+        -1px -1px 0 #ffffff,
+         1px -1px 0 #ffffff,
+        -1px  1px 0 #ffffff,
+         3px  3px 0 #ffffff;
+}
+
+.mensaje{
+    font-weight: bold;
+    font-size: 124%;
+    color: rgb(3, 3, 78);
+    text-shadow:
+        -1px -1px 0 #ffffff,
+         1px -1px 0 #ffffff,
+        -1px  1px 0 #ffffff,
+         3px  3px 0 #ffffff;
+}
+
+.tarjeta-info{
+    border: none;
+    border-radius: 20px;
+
+    transition: all 0.25s ease;
+}
+
+.tarjeta-info:hover{
+    transform: translateY(-5px);
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.icono{
+    font-size: 3rem;
+    color: #0d6efd;
+}

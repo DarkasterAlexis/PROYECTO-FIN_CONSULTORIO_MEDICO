@@ -1,0 +1,62 @@
+body{
+    background: url("../img/registropersonal.jpg") center center/cover no-repeat fixed;
+    min-height: 100vh;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.overlay{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.formulario-card{
+    max-width: 850px;
+    margin: auto;
+    border: none;
+    border-radius: 20px;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+}
+
+.titulo-principal{
+    font-weight: bold;
+    color: #0d6efd;
+    text-shadow:
+        -1px -1px 0 #000,
+         1px -1px 0 #000,
+        -1px  1px 0 #000,
+         1px  1px 0 #000;
+}
+
+.mensaje{
+    color: #444;
+    font-size: 1rem;
+}
+
+.form-label{
+    font-weight: 600;
+    color: #333;
+}
+
+.form-control,
+.form-select{
+    border-radius: 10px;
+}
+
+.efecto-sonido{
+    transition: all .3s ease;
+}
+
+.efecto-sonido:hover{
+    transform: translateY(-3px);
+}
+
+.btn-success{
+    font-weight: 600;
+}
+
+.btn-secondary{
+    font-weight: 600;
+}

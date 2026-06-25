@@ -1,38 +1,442 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registrar Paciente</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<title>Registrar Paciente</title>
+
+
+<!-- Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+rel="stylesheet">
+
+
+<!-- Icons -->
+<link rel="stylesheet"
+href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+
+<!-- CSS -->
+<link rel="stylesheet"
+href="{{ url_for('static', filename='css/registrar_paciente.css') }}">
+
+
 </head>
+
+
+
 <body>
-    <h1>REGISTRO DE PACIENTES</h1>
-    <hr>
-    <form method="POST">
-        <label>CI:</label>
-        <input type="text" name="ci" required><br><br>
-        <label>Nombres:</label>
-        <input type="text" name="nombres" required><br><br>
-        <label>Apellidos:</label>
-        <input type="text" name="apellidos" required><br><br
-        <label>Fecha de Nacimiento:</label>
-        <input type="date" name="fecha_nacimiento"><br><br>
-        <label>Sexo:</label>
-        <select name="sexo" required>
-            <option value="">Seleccione...</option>
-            <option value="Masculino">Masculino</option>
-            <option value="Femenino">Femenino</option>
-        </select>
-        <br><br>
-        <label>Teléfono:</label>
-        <input type="text" name="telefono"><br><br>
-        <label>Dirección:</label>
-        <input type="text" name="direccion"><br><br>
-        <label>Correo:</label>
-        <input type="email" name="correo"><br><br>
-        <button type="submit">Guardar</button>
-    </form>
-    <br>
-    <a href="/dashboard_admin"><button>Cancelar</button></a>
+
+
+
+<div class="container formulario-container">
+
+
+<div class="card shadow-lg formulario-card">
+
+
+
+<div class="card-body p-5">
+
+
+<div class="text-center mb-4">
+
+
+<i class="bi bi-person-vcard-fill icono-principal"></i>
+
+
+<h1 class="titulo-principal">
+REGISTRO DE PACIENTE
+</h1>
+
+
+<p class="mensaje">
+Ingrese la información del paciente.
+</p>
+
+
+</div>
+
+
+
+
+
+<form method="POST">
+
+
+
+
+
+<h4 class="seccion">
+
+<i class="bi bi-person-fill"></i>
+
+Datos Personales
+
+</h4>
+
+
+
+
+<div class="row">
+
+
+
+<div class="col-md-6 mb-3">
+
+
+<label class="form-label">
+CI
+</label>
+
+
+<div class="input-group">
+
+
+<span class="input-group-text">
+<i class="bi bi-card-text"></i>
+</span>
+
+
+<input type="text"
+class="form-control"
+name="ci"
+required>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="col-md-6 mb-3">
+
+
+<label class="form-label">
+Nombres
+</label>
+
+
+<div class="input-group">
+
+
+<span class="input-group-text">
+<i class="bi bi-person"></i>
+</span>
+
+
+<input type="text"
+class="form-control"
+name="nombres"
+required>
+
+
+</div>
+
+
+</div>
+
+
+
+
+</div>
+
+
+
+
+
+<div class="mb-3">
+
+
+<label class="form-label">
+Apellidos
+</label>
+
+
+<div class="input-group">
+
+
+<span class="input-group-text">
+<i class="bi bi-person-lines-fill"></i>
+</span>
+
+
+<input type="text"
+class="form-control"
+name="apellidos"
+required>
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="row">
+
+
+
+<div class="col-md-6 mb-3">
+
+
+<label class="form-label">
+Fecha de Nacimiento
+</label>
+
+
+<div class="input-group">
+
+
+<span class="input-group-text">
+<i class="bi bi-calendar-event"></i>
+</span>
+
+
+<input type="date"
+class="form-control"
+name="fecha_nacimiento">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="col-md-6 mb-3">
+
+
+<label class="form-label">
+Sexo
+</label>
+
+
+<div class="input-group">
+
+
+<span class="input-group-text">
+<i class="bi bi-gender-ambiguous"></i>
+</span>
+
+
+
+<select class="form-select"
+name="sexo"
+required>
+
+
+<option value="">
+Seleccione...
+</option>
+
+
+<option value="Masculino">
+Masculino
+</option>
+
+
+<option value="Femenino">
+Femenino
+</option>
+
+
+
+</select>
+
+
+</div>
+
+
+</div>
+
+
+
+</div>
+
+
+
+
+
+
+
+<h4 class="seccion mt-4">
+
+
+<i class="bi bi-telephone-fill"></i>
+
+Datos de Contacto
+
+
+</h4>
+
+
+
+
+
+<div class="mb-3">
+
+
+<label class="form-label">
+Teléfono
+</label>
+
+
+<div class="input-group">
+
+
+<span class="input-group-text">
+<i class="bi bi-phone"></i>
+</span>
+
+
+<input type="text"
+class="form-control"
+name="telefono">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+<div class="mb-3">
+
+
+<label class="form-label">
+Dirección
+</label>
+
+
+<div class="input-group">
+
+
+<span class="input-group-text">
+<i class="bi bi-geo-alt-fill"></i>
+</span>
+
+
+<input type="text"
+class="form-control"
+name="direccion">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+<div class="mb-4">
+
+
+<label class="form-label">
+Correo
+</label>
+
+
+<div class="input-group">
+
+
+<span class="input-group-text">
+<i class="bi bi-envelope-fill"></i>
+</span>
+
+
+<input type="email"
+class="form-control"
+name="correo">
+
+
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+<div class="d-grid gap-3">
+
+
+
+<button type="submit"
+class="btn btn-success btn-lg boton-sonido efecto-sonido">
+
+
+<i class="bi bi-save-fill"></i>
+
+Guardar Paciente
+
+
+</button>
+
+
+
+
+
+<a href="/listar_pacientes"
+class="btn btn-secondary btn-lg boton-sonido efecto-sonido">
+
+
+<i class="bi bi-arrow-left-circle-fill"></i>
+
+Volver
+
+
+</a>
+
+
+
+</div>
+
+
+
+
+
+</form>
+
+
+
+
+</div>
+
+
+</div>
+
+
+</div>
+
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
 </body>
+
 </html>

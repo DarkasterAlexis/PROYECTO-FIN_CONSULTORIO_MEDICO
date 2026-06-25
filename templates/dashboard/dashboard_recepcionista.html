@@ -3,18 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recepcionista</title>
+    <title>Panel Recepcionista</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard_recepcionista.css') }}">
 </head>
 <body>
-    <h1>Bienvenido {{ session['nombre'] }}</h1>
-    <h2>Panel Recepcionista</h2>
-    <ul>
-        <li><a href="/listar_pacientes">Gestionar Pacientes</a></li>
-        <li><a href="/listar_citas">Gestionar Reservas</a></li>
-        <li><a href="/agenda_recepcion">Agenda</a></li>
-    </ul>
-    <a href="/logout">
-        <button>Cerrar Sesión</button>
-    </a>
+    <div class="wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h3>ARANDA</h3>
+                <small>Recepcionista</small>
+            </div>
+            <nav>
+                <a href="/dashboard_recepcionista"class="menu-item boton-sonido efecto-sonido"><i class="bi bi-house-fill"></i>Inicio</a>
+                <a href="/listar_pacientes"class="menu-item boton-sonido efecto-sonido">
+                    <i class="bi bi-person-fill"></i>Gestionar Pacientes</a>
+                <a href="/listar_citas"class="menu-item boton-sonido efecto-sonido">
+                    <i class="bi bi-calendar-check-fill"></i>Gestionar Reservas</a>
+                <a href="/agenda_recepcion"class="menu-item boton-sonido efecto-sonido">
+                    <i class="bi bi-calendar3"></i>Agenda</a>
+            </nav>
+            <div class="logout">
+                <a href="/logout"class="menu-item boton-sonido efecto-sonido"><i class="bi bi-box-arrow-right"></i>Cerrar Sesión</a>
+            </div>
+        </aside>
+        <!-- Contenido principal -->
+        <main class="contenido">
+            <div class="bienvenida">
+                <h1>Bienvenido, {{ session['nombre'] }}</h1>
+                <p>Panel Recepcionista del Consultorio Médico ARANDA</p>
+            </div>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card tarjeta-info efecto-sonido">
+                        <div class="card-body text-center">
+                            <i class="bi bi-person-fill icono"></i>
+                            <h5>Pacientes</h5>
+                            <p>Administrar pacientes registrados</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card tarjeta-info efecto-sonido">
+                        <div class="card-body text-center">
+                            <i class="bi bi-calendar-check-fill icono"></i>
+                            <h5>Reservas</h5>
+                            <p>Gestionar citas médicas</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card tarjeta-info efecto-sonido">
+                        <div class="card-body text-center">
+                            <i class="bi bi-calendar3 icono"></i>
+                            <h5>Agenda</h5>
+                            <p>Consultar agenda de citas del dia</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>

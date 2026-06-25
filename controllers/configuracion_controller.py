@@ -3,6 +3,7 @@ from database import db
 from models.usuario import Usuario
 from models.consultorio import Consultorio
 from models.parametro import Parametro
+from models.medico import Medico
 
 config_bp = Blueprint('config',__name__)
 
@@ -25,10 +26,31 @@ def usuarios_config():
 def cambiar_estado_usuario(id):
     if session.get('rol') != 'Administrador':
         return "Acceso denegado"
-
     usuario = Usuario.query.get_or_404(id)
+    # Cambiar estado del usuario
     usuario.estado = not usuario.estado
+    # Cambiar estado del personal asociado
+    print("Usuario:", usuario.nombre_usuario) 
+    print("Estado usuario:", usuario.estado)
+    if usuario.personal:
+        if usuario.estado:
+            usuario.personal.Estado = "Activo"
+        else:
+            usuario.personal.Estado = "Inactivo"
+        # Verificar si este personal también es médico
+        medico = Medico.query.filter_by(
+            CodPersonal=usuario.personal.CodPersonal
+        ).first()
+        print("Médico encontrado:", medico)
+        if medico:
+            if usuario.estado:
+                medico.Estado = "Activo"
+                print("Estado médico ANTES:", medico.Estado)
+            else:
+                medico.Estado = "Inactivo"
+                print("Estado médico DESPUÉS:", medico.Estado)
     db.session.commit()
+
     return redirect(url_for('config.usuarios_config'))
 
 @config_bp.route('/configuracion/consultorio', methods=['GET','POST'])

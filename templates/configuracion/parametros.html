@@ -1,24 +1,72 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Parámetros</title>
+    <title>Parámetros del Sistema</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet"href="{{ url_for('static', filename='css/parametros.css') }}">
 </head>
 <body>
-    <h1>Parámetros del Sistema</h1>
-    <table border="1">
-        <tr>
-            <th>Nombre</th>
-            <th>Valor</th>
-        </tr>
-        {% for parametro in parametros %}
-        <tr>
-            <td>{{ parametro.nombre }}</td>
-            <td>{{ parametro.valor }}</td>
-        </tr>
-        {% endfor %}
-    </table><br>
-    <a href="/configuracion"><button>Volver</button></a>
+    <div class="overlay">
+        <div class="container py-5">
+            <div class="card shadow-lg parametros-card">
+                <div class="card-body p-5">
+                    <div class="text-center mb-4">
+                    <i class="bi bi-sliders icono-principal"></i>
+                    <h1 class="titulo-principal">
+                    PARÁMETROS DEL SISTEMA
+                    </h1>
+                    <p class="mensaje">
+                    Configuraciones generales utilizadas por el sistema.
+                    </p>
+                    </div>
+                    <div class="table-responsive">
+                    <table class="table table-hover align-middle text-center">
+                    <thead class="table-primary">
+                    <tr>
+                    <th>
+                    <i class="bi bi-tag-fill"></i>
+                    Nombre
+                    </th>
+                    <th>
+                    <i class="bi bi-gear-fill"></i>
+                    Valor
+                    </th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for parametro in parametros %}
+                    <tr>
+                    <td class="fw-bold">
+                    {{ parametro.nombre }}
+                    </td>
+                    <td>
+                    <span class="badge bg-info text-dark valor">
+                    {{ parametro.valor }}
+                    </span>
+                    </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>
+                    </div>
+                    <div class="text-center mt-4">
+                    <a href="/configuracion"
+                    class="btn btn-secondary btn-lg boton-sonido efecto-sonido">
+                    <i class="bi bi-arrow-left-circle-fill"></i>
+                    Volver a Configuración
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>

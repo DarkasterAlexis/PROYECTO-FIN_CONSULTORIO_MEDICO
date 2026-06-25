@@ -4,17 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Consultorio Médico ARANDA</title>
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"rel="stylesheet">
+    <!-- CSS propio -->
+    <link rel="stylesheet"href="{{ url_for('static', filename='css/index.css') }}">
 </head>
 <body>
-    <h1>SISTEMA WEB DE CONTROL DE ATENCIONES</h1>
-    <h2>CONSULTORIO MÉDICO ARANDA</h2>
-    <hr>
-    <p>Bienvenido al sistema.</p><br>
-    {% if mostrar_registro %}
-        <a href="/registro"><button>Registro</button></a><br><br>
-    {% endif %}
-    {% if mostrar_login %}
-        <a href="/login"><button>Iniciar Sesión</button></a>
-    {% endif %}
+    <div class="card shadow-lg inicio-card">
+        <div class="card-body text-center p-5">
+            <h1 class="titulo-principal">CONSULTORIO MÉDICO ARANDA</h1>
+            <hr>
+            <h5 class="subtitulo mb-4">Sistema Web para el Control de Atenciones</h5>
+            <p class="text-muted mb-4"><h6 class="mensaje">Bienvenido al sistema</h6></p>
+            {% if mostrar_registro %}
+                <a href="/registro" class="d-grid text-decoration-none boton-sonido"><button class="btn btn-success btn-lg efecto-sonido">Registro Inicial</button></a>
+            {% endif %}
+            {% if mostrar_login %}
+                <a href="/login" class="d-grid text-decoration-none boton-sonido"><button class="btn btn-primary btn-lg efecto-sonido">Iniciar Sesión</button></a>
+            {% endif %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
 </body>
 </html>

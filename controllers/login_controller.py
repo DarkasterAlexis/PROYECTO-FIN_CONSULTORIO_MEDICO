@@ -1,5 +1,6 @@
 from flask import Blueprint, render_template, request, redirect, session
 from models.usuario import Usuario
+from models.medico import Medico
 
 login_bp = Blueprint('login', __name__)
 
@@ -10,21 +11,35 @@ def login():
         password = request.form['password']
         usuario = Usuario.query.filter_by(nombre_usuario=nombre_usuario,password=password,estado=True).first()
         if usuario:
-            # Crear sesión
+            # ==========================
+            # DATOS GENERALES DE SESIÓN
+            # ==========================
             session['usuario_id'] = usuario.usuario_id
             session['nombre'] = usuario.personal.Nombre
             session['rol'] = usuario.rol.nombre_rol
-            # Redirigir según el rol
-            if usuario.rol.nombre_rol == 'Administrador':
+            session['personal_id'] = usuario.CodPersonal
+            # ==========================
+            # SI ES MÉDICO
+            # ==========================
+            if usuario.rol.nombre_rol == 'Medico':
+                medico = Medico.query.filter_by(CodPersonal=usuario.CodPersonal).first()
+                if medico:
+                    session['medico_id'] = medico.CodMedico
+                return redirect('/dashboard_medico')
+            # ==========================
+            # ADMINISTRADOR
+            # ==========================
+            elif usuario.rol.nombre_rol == 'Administrador':
                 return redirect('/dashboard_admin')
+            # ==========================
+            # RECEPCIONISTA
+            # ==========================
             elif usuario.rol.nombre_rol == 'Recepcionista':
                 return redirect('/dashboard_recepcionista')
-            elif usuario.rol.nombre_rol == 'Medico':
-                return redirect('/dashboard_medico')
             else:
                 return "Rol no reconocido."
         else:
-            return render_template('login.html',error='Usuario o contraseña incorrectos.')
+            return render_template('auth/login.html',error='Usuario o contraseña incorrectos.')
     return render_template('auth/login.html')
 
 @login_bp.route('/logout')

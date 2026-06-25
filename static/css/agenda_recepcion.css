@@ -1,0 +1,91 @@
+body{
+    background: url("../img/dashboard_recep.jpg") no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.overlay{
+    min-height: 100vh;
+    padding: 30px;
+}
+
+.card{
+    border-radius: 20px;
+    background-color: rgba(0, 74, 139, 0.487);
+}
+
+.titulo-principal{
+    font-weight: bold;
+    font-size: 240%;
+    color: #0d6efd;
+    text-shadow:
+        -1px -1px 0 #ffffff,
+         1px -1px 0 #ffffff,
+        -1px  1px 0 #ffffff,
+         3px  3px 0 #ffffff;
+}
+
+.mensaje{
+    font-weight: bold;
+    font-size: 124%;
+    color: rgb(3, 3, 78);
+    text-shadow:
+        -1px -1px 0 #ffffff,
+         1px -1px 0 #ffffff,
+        -1px  1px 0 #ffffff,
+         3px  3px 0 #ffffff;
+}
+
+.table{
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.tarjeta-resumen{
+    border: none;
+    transition: 0.3s;
+}
+
+.tarjeta-resumen:hover{
+    transform: translateY(-5px);
+}
+
+.icono{
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.total{
+    background: #e3f2fd;
+}
+
+.confirmada{
+    background: #d1e7dd;
+}
+
+.pendiente{
+    background: #fff3cd;
+}
+
+.atendida{
+    background: #cfe2ff;
+}
+
+.cancelada{
+    background: #f8d7da;
+}
+
+.tarjeta-resumen h5{
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.tarjeta-resumen p{
+    margin: 0;
+    font-weight: 600;
+}
+
+.btn{
+    border-radius: 12px;
+}

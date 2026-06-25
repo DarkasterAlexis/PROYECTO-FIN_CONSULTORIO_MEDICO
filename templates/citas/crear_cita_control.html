@@ -4,26 +4,146 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cita de Control</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/crear_cita_control.css') }}">
 </head>
+
 <body>
-    <h1>Nueva Cita de Control</h1>
-    <p>
-        <label for="">Paciente:</label>
-        <strong>{{ paciente.nombres }} {{ paciente.apellidos }}</strong>
-    </p>
-    <p>
-        <label for="">Médico:</label>
-        <strong>{{ medico.personal.Nombre }} {{ medico.personal.Apellidos }}</strong>
-    </p>
-    <form method="POST">
-        <label for="">Fecha:</label>
-        <input type="date"name="fecha"required><br><br>
-        <label for="">Hora:</label>
-        <input type="time"name="hora"required><br><br>
-        <label for="">Motivo:</label>
-        <textarea name="motivo"required>Control médico</textarea>
-        <br><br>
-        <button type="submit">Enviar a Recepción</button>
-    </form>
+
+<div class="overlay">
+
+    <div class="container py-5">
+
+        <div class="card shadow-lg formulario-card">
+
+            <div class="card-body p-5">
+
+                <div class="text-center mb-4">
+
+                    <i class="bi bi-calendar-plus-fill icono-principal"></i>
+
+                    <h1 class="titulo-principal">
+                        NUEVA CITA DE CONTROL
+                    </h1>
+
+                    <p class="mensaje">
+                        Programe una nueva cita de seguimiento para el paciente.
+                    </p>
+
+                </div>
+
+                <!-- Información -->
+
+                <div class="alert alert-info">
+
+                    <p class="mb-2">
+
+                        <strong>Paciente:</strong>
+
+                        {{ paciente.nombres }}
+                        {{ paciente.apellidos }}
+
+                    </p>
+
+                    <p class="mb-0">
+
+                        <strong>Médico:</strong>
+
+                        Dr(a).
+                        {{ medico.personal.Nombre }}
+                        {{ medico.personal.Apellidos }}
+
+                    </p>
+
+                </div>
+
+                <form method="POST">
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Fecha de Control
+                        </label>
+
+                        <input type="date"
+                               name="fecha"
+                               class="form-control"
+                               required>
+
+                    </div>
+
+                    <div class="mb-3">
+
+                        <label class="form-label">
+                            Hora
+                        </label>
+
+                        <input type="time"
+                               name="hora"
+                               class="form-control"
+                               required>
+
+                    </div>
+
+                    <div class="mb-4">
+
+                        <label class="form-label">
+                            Motivo
+                        </label>
+
+                        <textarea name="motivo"
+                                  class="form-control"
+                                  rows="4"
+                                  required>Control médico</textarea>
+
+                    </div>
+
+                    <div class="d-grid gap-3">
+
+                        <button type="submit"
+                                class="btn btn-success btn-lg efecto-sonido">
+
+                            <i class="bi bi-send-fill"></i>
+                            Enviar a Recepción
+
+                        </button>
+
+                        <a href="/dashboard_medico"
+                           class="text-decoration-none boton-sonido">
+
+                            <button type="button"
+                                    class="btn btn-secondary btn-lg efecto-sonido w-100">
+
+                                <i class="bi bi-arrow-left-circle-fill"></i>
+                                Cancelar
+
+                            </button>
+
+                        </a>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
 </body>
 </html>

@@ -1,0 +1,77 @@
+body{
+    margin: 0;
+    min-height: 100vh;
+
+    background-image: url("../img/dashboard_admin.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    font-family: Arial, sans-serif;
+}
+
+.overlay{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+}
+
+.card{
+    border: none;
+    border-radius: 20px;
+    background-color: rgba(0, 0, 139, 0.638);
+}
+
+.titulo-principal{
+    font-weight: bold;
+    font-size: 240%;
+    color: #0d6efd;
+    text-shadow:
+        -1px -1px 0 #ffffff,
+         1px -1px 0 #ffffff,
+        -1px  1px 0 #ffffff,
+         3px  3px 0 #ffffff;
+}
+
+.mensaje{
+    font-weight: bold;
+    font-size: 124%;
+    color: rgb(3, 3, 78);
+    text-shadow:
+        -1px -1px 0 #ffffff,
+         1px -1px 0 #ffffff,
+        -1px  1px 0 #ffffff,
+         3px  3px 0 #ffffff;
+}
+
+.table{
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.table tbody tr{
+    transition: all 0.2s ease;
+}
+
+.table tbody tr:hover{
+    transform: scale(1.01);
+}
+
+.badge{
+    font-size: 0.9rem;
+    padding: 8px 12px;
+}
+
+.btn{
+    transition: all 0.25s ease;
+}
+
+.btn:hover{
+    transform: translateY(-2px);
+
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+
+.input-group{
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}

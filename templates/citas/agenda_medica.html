@@ -4,38 +4,152 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agenda Médica</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/agenda_medica.css') }}">
 </head>
+
 <body>
-    <h1>AGENDA MÉDICA DEL DÍA</h1>
-    {% if citas %}
-    <table border="1">
-        <tr>
-            <th>Hora</th>
-            <th>Paciente</th>
-            <th>CI</th>
-            <th>Teléfono</th>
-            <th>Motivo</th>
-            <th>Historial</th>
-            <th>Acción</th>
-        </tr>
-        {% for cita in citas %}
-        <tr>
-            <td>{{ cita.Hora.strftime('%H:%M') }}</td>
-            <td>{{ cita.paciente.nombres }}{{ cita.paciente.apellidos }}</td>
-            <td>{{ cita.paciente.ci }}</td>
-            <td>{{ cita.paciente.telefono }}</td>
-            <td>{{ cita.Motivo }}</td>
-            <td><a href="/historial_paciente/{{ cita.CodPaciente }}"><button>Historial</button></a></td>
-            <td><a href="/iniciar_atencion/{{ cita.CodCita }}"><button>Iniciar Atención</button></a></td>   
-        </tr>
-        {% endfor %}
-    </table>
-    {% else %}
-    <p>No existen citas confirmadas para hoy.</p>
-    {% endif %}
-    <br>
-    <a href="/dashboard_medico">
-        <button>Volver al menu</button>
-    </a>
+
+    <div class="overlay">
+
+        <div class="container py-5">
+
+            <div class="card shadow-lg">
+
+                <div class="card-body p-4">
+
+                    <div class="text-center mb-4">
+                        <h1 class="titulo-principal">
+                            AGENDA MÉDICA DEL DÍA
+                        </h1>
+
+                        <p class="mensaje">
+                            Consultas médicas confirmadas para atención.
+                        </p>
+                    </div>
+
+                    {% if citas %}
+
+                    <div class="table-responsive">
+
+                        <table class="table table-hover align-middle text-center">
+
+                            <thead class="table-primary">
+
+                                <tr>
+                                    <th>Hora</th>
+                                    <th>Paciente</th>
+                                    <th>CI</th>
+                                    <th>Teléfono</th>
+                                    <th>Motivo</th>
+                                    <th>Historial</th>
+                                    <th>Atención</th>
+                                </tr>
+
+                            </thead>
+
+                            <tbody>
+
+                                {% for cita in citas %}
+
+                                <tr>
+
+                                    <td>
+                                        {{ cita.Hora.strftime('%H:%M') }}
+                                    </td>
+
+                                    <td>
+                                        {{ cita.paciente.nombres }}
+                                        {{ cita.paciente.apellidos }}
+                                    </td>
+
+                                    <td>
+                                        {{ cita.paciente.ci }}
+                                    </td>
+
+                                    <td>
+                                        {{ cita.paciente.telefono }}
+                                    </td>
+
+                                    <td>
+                                        {{ cita.Motivo }}
+                                    </td>
+
+                                    <td>
+
+                                        <a href="/historial_paciente/{{ cita.CodPaciente }}"
+                                        class="btn btn-info btn-sm boton-sonido efecto-sonido">
+
+                                            <i class="bi bi-clock-history"></i>
+
+                                        </a>
+
+                                    </td>
+
+                                    <td>
+
+                                        <a href="/iniciar_atencion/{{ cita.CodCita }}"
+                                        class="btn btn-success btn-sm boton-sonido efecto-sonido">
+
+                                            <i class="bi bi-heart-pulse-fill"></i>
+
+                                        </a>
+
+                                    </td>
+
+                                </tr>
+
+                                {% endfor %}
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+                    {% else %}
+
+                    <div class="alert alert-warning text-center">
+
+                        <i class="bi bi-exclamation-triangle-fill"></i>
+
+                        No existen citas confirmadas para hoy.
+
+                    </div>
+
+                    {% endif %}
+
+                    <div class="text-center mt-4">
+
+                        <a href="/dashboard_medico"
+                        class="btn btn-secondary btn-lg boton-sonido efecto-sonido">
+
+                            <i class="bi bi-arrow-left-circle-fill"></i>
+                            Volver al Panel
+
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
 </body>
 </html>

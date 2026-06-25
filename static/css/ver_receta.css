@@ -1,0 +1,54 @@
+body{
+    background: url("../img/listar.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.overlay{
+    min-height: 100vh;
+}
+
+.receta-card{
+    max-width: 1100px;
+    margin: auto;
+    border: none;
+    border-radius: 25px;
+    background: rgba(255,255,255,0.98);
+    backdrop-filter: blur(8px);
+}
+
+.icono-principal{
+    font-size: 4rem;
+    color: #198754;
+}
+
+.titulo-principal{
+    color: #198754;
+    font-weight: bold;
+}
+
+.mensaje{
+    color: #6c757d;
+}
+
+.table{
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.observaciones{
+    background: #f8f9fa;
+    border-left: 5px solid #198754;
+    padding: 15px;
+    border-radius: 10px;
+    min-height: 80px;
+}
+
+.btn{
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+}

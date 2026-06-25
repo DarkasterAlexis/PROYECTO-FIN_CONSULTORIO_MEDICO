@@ -1,0 +1,59 @@
+body{
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            rgba(0,0,0,0.55),
+            rgba(0,0,0,0.55)
+        ),
+        url("../img/fondo_medico.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.inicio-card{
+    max-width: 450px;
+    width: 100%;
+    border: none;
+    border-radius: 25px;
+    backdrop-filter: blur(4px);
+    background-color: rgba(32, 32, 199, 0.714);
+}
+
+.titulo-principal{
+    font-weight: bold;
+    color: #67acdd;
+    font-family: Showcard Gothic;
+}
+
+.subtitulo{
+    font-weight: bold;
+    color: #70c1e1;
+}
+
+.mensaje{
+    color: rgb(106, 183, 38) ;
+    font-size: 30px;
+    font-weight: bold;
+    
+}
+
+.efecto-sonido{
+    transition: all 0.25s ease;
+}
+
+.efecto-sonido:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+}
+
+.efecto-sonido:active{
+    transform: translateY(0);
+}

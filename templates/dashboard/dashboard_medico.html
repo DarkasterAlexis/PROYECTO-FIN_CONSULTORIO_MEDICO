@@ -1,19 +1,202 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Médico</title>
+    <title>Panel Médico</title>
+
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+    <!-- CSS -->
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/dashboard_medico.css') }}">
 </head>
+
 <body>
-    <h1>Bienvenido Dr(a). {{ session['nombre'] }}</h1>
-    <h2>Panel Médico</h2>
-    <ul>
-        <li><a href="/agenda_medica">Citas Médicas </a></li>
-        <li><a href="/historial_atenciones">Historial de Atenciones</a></li>
-        <li><a href="/recetas_medicas">Recetas Médicas</a></li>
-        <li><a href="/reportes_medico">Reportes</a></li>
-    </ul>
-    <a href="/logout"><button>Cerrar Sesión</button></a>
+
+<div class="wrapper">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+
+        <div class="sidebar-header">
+            <h3>ARANDA</h3>
+            <small>Médico</small>
+        </div>
+
+        <nav>
+
+            <a href="/dashboard_medico"
+               class="menu-item boton-sonido efecto-sonido">
+
+                <i class="bi bi-house-fill"></i>
+                Inicio
+
+            </a>
+
+            <a href="/agenda_medica"
+               class="menu-item boton-sonido efecto-sonido">
+
+                <i class="bi bi-calendar-check-fill"></i>
+                Citas Médicas
+
+            </a>
+
+            <a href="/historial_atenciones"
+               class="menu-item boton-sonido efecto-sonido">
+
+                <i class="bi bi-file-earmark-medical-fill"></i>
+                Historial de Atenciones
+
+            </a>
+
+            <a href="/recetas_medicas"
+               class="menu-item boton-sonido efecto-sonido">
+
+                <i class="bi bi-prescription2"></i>
+                Recetas Médicas
+
+            </a>
+
+            <a href="/reportes_medico"
+               class="menu-item boton-sonido efecto-sonido">
+
+                <i class="bi bi-bar-chart-fill"></i>
+                Reportes
+
+            </a>
+
+        </nav>
+
+        <div class="logout">
+
+            <a href="/logout"
+               class="menu-item boton-sonido efecto-sonido">
+
+                <i class="bi bi-box-arrow-right"></i>
+                Cerrar Sesión
+
+            </a>
+
+        </div>
+
+    </aside>
+
+
+    <!-- Contenido principal -->
+    <main class="contenido">
+
+        <div class="bienvenida">
+
+            <h1>
+                Bienvenido Dr(a). {{ session['nombre'] }}
+            </h1>
+
+            <p class="mensaje">
+                Panel Médico del Consultorio Médico ARANDA
+            </p>
+
+        </div>
+
+
+        <div class="row g-4">
+
+            <div class="col-md-3">
+
+                <div class="card tarjeta-info efecto-sonido">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-calendar-check-fill icono"></i>
+
+                        <h5>Citas</h5>
+
+                        <p>
+                            Consultar agenda médica.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="card tarjeta-info efecto-sonido">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-file-earmark-medical-fill icono"></i>
+
+                        <h5>Historial</h5>
+
+                        <p>
+                            Revisar atenciones realizadas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="card tarjeta-info efecto-sonido">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-prescription2 icono"></i>
+
+                        <h5>Recetas</h5>
+
+                        <p>
+                            Emitir recetas médicas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="col-md-3">
+
+                <div class="card tarjeta-info efecto-sonido">
+
+                    <div class="card-body text-center">
+
+                        <i class="bi bi-bar-chart-fill icono"></i>
+
+                        <h5>Reportes</h5>
+
+                        <p>
+                            Consultar estadísticas médicas.
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script src="{{ url_for('static', filename='js/index.js') }}"></script>
+
 </body>
 </html>

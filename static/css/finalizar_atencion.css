@@ -1,0 +1,42 @@
+body{
+    background: url("../img/atencion.jpg") no-repeat center center fixed;
+    background-size: cover;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.finalizar-card{
+    max-width: 750px;
+    width: 100%;
+    border: none;
+    border-radius: 25px;
+    backdrop-filter: blur(10px);
+}
+
+.icono-exito{
+    font-size: 5rem;
+    color: #198754;
+}
+
+.titulo-principal{
+    color: #198754;
+    font-weight: bold;
+}
+
+.mensaje{
+    font-size: 1.1rem;
+    color: #495057;
+}
+
+.info-paciente{
+    margin-top: 20px;
+    color: #212529;
+}
+
+.btn{
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.btn:hover{
+    transform: translateY(-3px);
+}
